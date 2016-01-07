@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\projects\biyesheji\app\src\main\AndroidManifest.xml:2:1-20:12
+ADDED from D:\projects\biyesheji\app\src\main\AndroidManifest.xml:2:1-25:12
 	package
 		ADDED from D:\projects\biyesheji\app\src\main\AndroidManifest.xml:3:5-30
 		INJECTED from D:\projects\biyesheji\app\src\main\AndroidManifest.xml
@@ -22,7 +22,7 @@ ADDED from D:\projects\biyesheji\app\src\main\AndroidManifest.xml:7:3-95
 	android:name
 		ADDED from D:\projects\biyesheji\app\src\main\AndroidManifest.xml:7:20-76
 application
-ADDED from D:\projects\biyesheji\app\src\main\AndroidManifest.xml:9:3-18:17
+ADDED from D:\projects\biyesheji\app\src\main\AndroidManifest.xml:9:3-23:17
 MERGED from [com.android.support:appcompat-v7:23.1.0] D:\projects\biyesheji\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.1.0] D:\projects\biyesheji\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:design:23.1.0] D:\projects\biyesheji\app\build\intermediates\exploded-aar\com.android.support\design\23.1.0\AndroidManifest.xml:22:5-20
@@ -47,6 +47,20 @@ MERGED from [com.android.support:support-v4:23.1.0] D:\projects\biyesheji\app\bu
 		ADDED from D:\projects\biyesheji\app\src\main\AndroidManifest.xml:15:7-38
 	android:name
 		ADDED from D:\projects\biyesheji\app\src\main\AndroidManifest.xml:10:7-36
+activity#com.zhicall.hax.activities.MainActivity
+ADDED from D:\projects\biyesheji\app\src\main\AndroidManifest.xml:17:5-22:16
+	android:name
+		ADDED from D:\projects\biyesheji\app\src\main\AndroidManifest.xml:17:15-54
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from D:\projects\biyesheji\app\src\main\AndroidManifest.xml:18:7-21:23
+action#android.intent.action.MAIN
+ADDED from D:\projects\biyesheji\app\src\main\AndroidManifest.xml:19:9-68
+	android:name
+		ADDED from D:\projects\biyesheji\app\src\main\AndroidManifest.xml:19:17-58
+category#android.intent.category.LAUNCHER
+ADDED from D:\projects\biyesheji\app\src\main\AndroidManifest.xml:20:9-78
+	android:name
+		ADDED from D:\projects\biyesheji\app\src\main\AndroidManifest.xml:20:19-66
 uses-sdk
 INJECTED from D:\projects\biyesheji\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:23.1.0] D:\projects\biyesheji\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\AndroidManifest.xml:20:5-43

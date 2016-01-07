@@ -2357,8 +2357,10 @@ containing a value of this type.
         public static final int beginning=0x7f0c0033;
         public static final int both=0x7f0c003a;
         public static final int bottom=0x7f0c001f;
+        public static final int btn_dismiss=0x7f0c0078;
         public static final int btn_downLoad=0x7f0c007f;
         public static final int btn_go=0x7f0c0080;
+        public static final int btn_show=0x7f0c0077;
         public static final int btn_start=0x7f0c007a;
         public static final int btn_test=0x7f0c007e;
         public static final int btn_view1=0x7f0c0082;
@@ -2418,8 +2420,6 @@ containing a value of this type.
         public static final int lstv_courselist=0x7f0c0075;
         public static final int lstv_pulltoload=0x7f0c007b;
         public static final int lstv_pulltorefresh=0x7f0c007c;
-        public static final int main_list=0x7f0c0078;
-        public static final int main_swipe=0x7f0c0077;
         public static final int manualOnly=0x7f0c003c;
         public static final int media_actions=0x7f0c0097;
         public static final int middle=0x7f0c0034;

@@ -620,8 +620,10 @@ int id always 0x7f0c0035
 int id beginning 0x7f0c0033
 int id both 0x7f0c003a
 int id bottom 0x7f0c001f
+int id btn_dismiss 0x7f0c0078
 int id btn_downLoad 0x7f0c007f
 int id btn_go 0x7f0c0080
+int id btn_show 0x7f0c0077
 int id btn_start 0x7f0c007a
 int id btn_test 0x7f0c007e
 int id btn_view1 0x7f0c0082
@@ -681,8 +683,6 @@ int id llayout_tab 0x7f0c0081
 int id lstv_courselist 0x7f0c0075
 int id lstv_pulltoload 0x7f0c007b
 int id lstv_pulltorefresh 0x7f0c007c
-int id main_list 0x7f0c0078
-int id main_swipe 0x7f0c0077
 int id manualOnly 0x7f0c003c
 int id media_actions 0x7f0c0097
 int id middle 0x7f0c0034

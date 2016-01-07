@@ -9,7 +9,7 @@ import android.os.Bundle;
  * Email:huangjinxin@zhicall.cn
  */
 public abstract class BaseActivity extends Activity {
-  ProgressDialog mProgressDialog = null;
+  public ProgressDialog mProgressDialog = null;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
