@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="66dp"
+    >
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/tv_name"
+      android:text="赵忠祥"
+      android:textSize="19sp"
+      android:textColor="#000"
+      android:layout_marginLeft="5dp"
+      android:layout_centerVertical="true"
+      android:layout_alignParentLeft="true"
+      android:layout_alignParentStart="true"
+      />
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/tv_time"
+      android:text="2015-12-03 09:34:24"
+      android:layout_marginBottom="3dp"
+      android:layout_alignParentBottom="true"
+      android:layout_alignLeft="@+id/tv_name"
+      android:layout_alignStart="@+id/tv_name"
+      />
+
+</RelativeLayout><!-- From: file:/D:/project/Draven/app/src/main/res/layout/item_mlstv.xml -->
