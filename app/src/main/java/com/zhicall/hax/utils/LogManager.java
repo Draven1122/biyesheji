@@ -8,6 +8,7 @@ import android.util.Log;
  * phone:157571770**
  */
 public class LogManager {
+  /*这是一个github的测试*/
   public static void showLog(String str) {
     Log.i("Draven", str);
   }
