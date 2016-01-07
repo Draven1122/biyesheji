@@ -17,7 +17,7 @@ public abstract class BaseActivity extends Activity {
   }
 
   /**
-   * 做一些初始化数据的操作
+   * 在setContentView之前做一些初始化数据的操作
    */
   public abstract void init();
 
