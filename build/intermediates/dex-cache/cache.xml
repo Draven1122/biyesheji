@@ -2,130 +2,130 @@
 <items version="2" >
 
     <item
-        jar="D:\project\Draven\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
-        <dex dex="D:\project\Draven\app\build\intermediates\pre-dexed\debug\classes-3790c0e68f42df9990f63105c3e47b179820a73b.jar" />
-    </item>
-    <item
-        jar="C:\Users\zhicall\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp\okhttp\2.0.0\4c8d1536dba3812cc1592090dc20c47a4ed3c35e\okhttp-2.0.0.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="4c8d1536dba3812cc1592090dc20c47a4ed3c35e">
-        <dex dex="D:\project\Draven\app\build\intermediates\pre-dexed\debug\okhttp-2.0.0-ecd593263a80300067055364546ed04c143a051f.jar" />
-    </item>
-    <item
         jar="C:\Users\zhicall\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.0.0\2534c458682c73f5b9871131ab3098d3f987ca3\okio-1.0.0.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="02534c458682c73f5b9871131ab3098d3f987ca3">
-        <dex dex="D:\project\Draven\app\build\intermediates\pre-dexed\debug\okio-1.0.0-8e4074b630111ab805382f80e2122c9c460442ef.jar" />
+        <dex dex="D:\projects\biyesheji\app\build\intermediates\pre-dexed\debug\okio-1.0.0-8e4074b630111ab805382f80e2122c9c460442ef.jar" />
     </item>
     <item
-        jar="D:\project\Draven\app\libs\KJFrameForAndroid_v2.245.jar"
+        jar="D:\projects\biyesheji\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="67b7cc955c7a260fccc98217fb36cb689698e833">
-        <dex dex="D:\project\Draven\app\build\intermediates\pre-dexed\debug\KJFrameForAndroid_v2.245-065da7700f37e1a2d5bdcfec70456c2986a9ce31.jar" />
-    </item>
-    <item
-        jar="D:\project\Draven\app\libs\classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="aa81bfe8c5cc88c2472ca936ae71f0c3dd1766df">
-        <dex dex="D:\project\Draven\app\build\intermediates\pre-dexed\debug\classes-a49b7dd0b6d005deacc646eebc9fab51402a3ac1.jar" />
-    </item>
-    <item
-        jar="D:\project\Draven\app\libs\butterknife-7.0.1.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
-        <dex dex="D:\project\Draven\app\build\intermediates\pre-dexed\debug\butterknife-7.0.1-4f8f5a9d25c673671f38cc92efcd39e9ffb7b1be.jar" />
-    </item>
-    <item
-        jar="D:\project\Draven\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="3f151e49c316a5ab2c065969a3b3b55ef9b393fc">
-        <dex dex="D:\project\Draven\app\build\intermediates\pre-dexed\debug\classes-bacd006700afdae5ff3b8460fa6093e0a8634648.jar" />
-    </item>
-    <item
-        jar="C:\Users\zhicall\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.3.1\ecb6e1f8e4b0e84c4b886c2f14a1500caf309757\gson-2.3.1.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
-        <dex dex="D:\project\Draven\app\build\intermediates\pre-dexed\debug\gson-2.3.1-4e9c6fc9a0445b3f7f8796772c3a2ecb28a38dc0.jar" />
-    </item>
-    <item
-        jar="C:\Users\zhicall\.gradle\caches\modules-2\files-2.1\com.squareup\otto\1.3.5\7941cd2c2c8ec006800d75c35f8a9dacf892ab93\otto-1.3.5.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="7941cd2c2c8ec006800d75c35f8a9dacf892ab93">
-        <dex dex="D:\project\Draven\app\build\intermediates\pre-dexed\debug\otto-1.3.5-a50fca77b4e84234365a1c48760eba8816676b72.jar" />
-    </item>
-    <item
-        jar="D:\project\Draven\app\build\intermediates\exploded-aar\com.github.recruit-lifestyle\WaveSwipeRefreshLayout\1.4\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="ea2ba01e0979e8934b6cf81c87ac9e2a6c0e9b5a">
-        <dex dex="D:\project\Draven\app\build\intermediates\pre-dexed\debug\classes-7d7d80faf2f162d550a99b43fc07e099e2d36d50.jar" />
-    </item>
-    <item
-        jar="D:\project\Draven\app\libs\rxjava-1.0.10.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="c28ade6b57e4d4338b5fe0c9ac0e57805f1724f3">
-        <dex dex="D:\project\Draven\app\build\intermediates\pre-dexed\debug\rxjava-1.0.10-530c5be2d46ca70ea72b29b70aa606c6e4126bb6.jar" />
-    </item>
-    <item
-        jar="D:\project\Draven\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="57ae0d750ff83f0c738d21720224ac7ea866a094">
-        <dex dex="D:\project\Draven\app\build\intermediates\pre-dexed\debug\classes-0137989f291d593cf0e1317475cea5aaa0fb289d.jar" />
-    </item>
-    <item
-        jar="D:\AndroidSDK\extras\android\m2repository\com\android\support\support-annotations\23.1.0\support-annotations-23.1.0.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="92e3fc113ec3ee36b64603a38857b95700025633">
-        <dex dex="D:\project\Draven\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.0-352bae7973ce3431d0057e3aad33427d2db3baf1.jar" />
-    </item>
-    <item
-        jar="D:\project\Draven\app\build\intermediates\exploded-aar\Draven\mylibrary\unspecified\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="57b18f03799f74408887326c68fae6e60ff0e1f7">
-        <dex dex="D:\project\Draven\app\build\intermediates\pre-dexed\debug\classes-b256b39f38ae78c762b44cfe6c1f687e433f6207.jar" />
+        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
+        <dex dex="D:\projects\biyesheji\app\build\intermediates\pre-dexed\debug\classes-403d8d53f83c06086e7bd17f29e195178c215993.jar" />
     </item>
     <item
         jar="C:\Users\zhicall\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit\retrofit\1.9.0\a681c044244d9fc375198588297a39ba78028423\retrofit-1.9.0.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="a681c044244d9fc375198588297a39ba78028423">
-        <dex dex="D:\project\Draven\app\build\intermediates\pre-dexed\debug\retrofit-1.9.0-7dfe43217c26f361d4d47f14c6620f4f7a23fbfd.jar" />
+        <dex dex="D:\projects\biyesheji\app\build\intermediates\pre-dexed\debug\retrofit-1.9.0-7dfe43217c26f361d4d47f14c6620f4f7a23fbfd.jar" />
     </item>
     <item
-        jar="D:\project\Draven\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\libs\internal_impl-23.1.0.jar"
+        jar="D:\projects\biyesheji\app\libs\classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
-        <dex dex="D:\project\Draven\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.0-bcdee74d934ba9a500e2fe3d66c4d618f01aacbf.jar" />
+        sha1="aa81bfe8c5cc88c2472ca936ae71f0c3dd1766df">
+        <dex dex="D:\projects\biyesheji\app\build\intermediates\pre-dexed\debug\classes-dc79d2a2d8206920e818061c43a9ca2544bc331c.jar" />
     </item>
     <item
-        jar="D:\project\Draven\app\build\intermediates\exploded-aar\com.android.support\design\23.1.0\jars\classes.jar"
+        jar="C:\Users\zhicall\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp\okhttp\2.0.0\4c8d1536dba3812cc1592090dc20c47a4ed3c35e\okhttp-2.0.0.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="19026d31f5d3ae868db81319671a642be5fbba08">
-        <dex dex="D:\project\Draven\app\build\intermediates\pre-dexed\debug\classes-1444bd8bea5b61c206b3bae2fedb7b5d6b9be2b3.jar" />
+        sha1="4c8d1536dba3812cc1592090dc20c47a4ed3c35e">
+        <dex dex="D:\projects\biyesheji\app\build\intermediates\pre-dexed\debug\okhttp-2.0.0-ecd593263a80300067055364546ed04c143a051f.jar" />
+    </item>
+    <item
+        jar="D:\projects\biyesheji\app\build\intermediates\exploded-aar\biyesheji\mylibrary\unspecified\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="7f1663e33577915e8c165a07304eafee4c67091a">
+        <dex dex="D:\projects\biyesheji\app\build\intermediates\pre-dexed\debug\classes-a9f995c0d01101cf5d1d5e2c0754838f95e2e0d5.jar" />
+    </item>
+    <item
+        jar="D:\projects\biyesheji\app\libs\KJFrameForAndroid_v2.245.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="67b7cc955c7a260fccc98217fb36cb689698e833">
+        <dex dex="D:\projects\biyesheji\app\build\intermediates\pre-dexed\debug\KJFrameForAndroid_v2.245-e245c30e4e170234aa7afa98dfdb8164d272db22.jar" />
     </item>
     <item
         jar="C:\Users\zhicall\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit.samples\github-client\1.9.0\bece3cad0c650339e1f68e293148307bdfeaca7f\github-client-1.9.0.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="bece3cad0c650339e1f68e293148307bdfeaca7f">
-        <dex dex="D:\project\Draven\app\build\intermediates\pre-dexed\debug\github-client-1.9.0-527eadc1ad18646ea0598e02d682cf408c3c73de.jar" />
+        <dex dex="D:\projects\biyesheji\app\build\intermediates\pre-dexed\debug\github-client-1.9.0-527eadc1ad18646ea0598e02d682cf408c3c73de.jar" />
+    </item>
+    <item
+        jar="D:\projects\biyesheji\app\libs\rxjava-1.0.10.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="c28ade6b57e4d4338b5fe0c9ac0e57805f1724f3">
+        <dex dex="D:\projects\biyesheji\app\build\intermediates\pre-dexed\debug\rxjava-1.0.10-d9023dbc9455b2b80442daefd066ca38146cd5a0.jar" />
+    </item>
+    <item
+        jar="D:\projects\biyesheji\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="3f151e49c316a5ab2c065969a3b3b55ef9b393fc">
+        <dex dex="D:\projects\biyesheji\app\build\intermediates\pre-dexed\debug\classes-44a6c9bc72425923b04f81f839c683a3623da2fb.jar" />
+    </item>
+    <item
+        jar="C:\Users\zhicall\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.3.1\ecb6e1f8e4b0e84c4b886c2f14a1500caf309757\gson-2.3.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="D:\projects\biyesheji\app\build\intermediates\pre-dexed\debug\gson-2.3.1-4e9c6fc9a0445b3f7f8796772c3a2ecb28a38dc0.jar" />
+    </item>
+    <item
+        jar="D:\AndroidSDK\extras\android\m2repository\com\android\support\support-annotations\23.1.0\support-annotations-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="92e3fc113ec3ee36b64603a38857b95700025633">
+        <dex dex="D:\projects\biyesheji\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.0-352bae7973ce3431d0057e3aad33427d2db3baf1.jar" />
+    </item>
+    <item
+        jar="D:\projects\biyesheji\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="57ae0d750ff83f0c738d21720224ac7ea866a094">
+        <dex dex="D:\projects\biyesheji\app\build\intermediates\pre-dexed\debug\classes-47bd78c2fad4682791f65a4b48207b8733d18459.jar" />
+    </item>
+    <item
+        jar="D:\projects\biyesheji\app\build\intermediates\exploded-aar\com.android.support\design\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="19026d31f5d3ae868db81319671a642be5fbba08">
+        <dex dex="D:\projects\biyesheji\app\build\intermediates\pre-dexed\debug\classes-d4f6c44a1b37a4f4a02a50eed9e5a174172dbe0f.jar" />
+    </item>
+    <item
+        jar="D:\projects\biyesheji\app\build\intermediates\exploded-aar\com.github.recruit-lifestyle\WaveSwipeRefreshLayout\1.4\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ea2ba01e0979e8934b6cf81c87ac9e2a6c0e9b5a">
+        <dex dex="D:\projects\biyesheji\app\build\intermediates\pre-dexed\debug\classes-5e97e83f7164107c21a5466b2e53b010a69bbd41.jar" />
+    </item>
+    <item
+        jar="D:\projects\biyesheji\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\libs\internal_impl-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
+        <dex dex="D:\projects\biyesheji\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.0-09d0f04cf64cd9b441afbedd7e9a905a2f8632f4.jar" />
+    </item>
+    <item
+        jar="C:\Users\zhicall\.gradle\caches\modules-2\files-2.1\com.squareup\otto\1.3.5\7941cd2c2c8ec006800d75c35f8a9dacf892ab93\otto-1.3.5.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="7941cd2c2c8ec006800d75c35f8a9dacf892ab93">
+        <dex dex="D:\projects\biyesheji\app\build\intermediates\pre-dexed\debug\otto-1.3.5-a50fca77b4e84234365a1c48760eba8816676b72.jar" />
+    </item>
+    <item
+        jar="D:\projects\biyesheji\app\libs\butterknife-7.0.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
+        <dex dex="D:\projects\biyesheji\app\build\intermediates\pre-dexed\debug\butterknife-7.0.1-fb1883a73e413dedb71aaf483eb94a41a1ae3191.jar" />
     </item>
 
 </items>
