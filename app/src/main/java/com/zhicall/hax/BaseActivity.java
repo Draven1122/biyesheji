@@ -38,6 +38,7 @@ public abstract class BaseActivity extends Activity {
   public void initActionbar(boolean left, boolean right, String title) {
 
     mActionBar = getActionBar();
+    //注意,没有这句代码设置自定义actionbar将不起作用
     mActionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
     mActionBar.setCustomView(R.layout.layout_actionar);
     mTitleTextView = (TextView) mActionBar.getCustomView().findViewById(R.id.tv_actionbar_title);
