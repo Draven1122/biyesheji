@@ -9,7 +9,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import butterknife.ButterKnife;
 
-/**
+/**Activity的通用父类，已经写好了一些可能用到的方法
  * Created by Xingchen on 2016/1/7.
  * Email:huangjinxin@zhicall.cn
  */
