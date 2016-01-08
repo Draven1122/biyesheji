@@ -1,8 +1,13 @@
 package com.zhicall.hax;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import butterknife.ButterKnife;
 
 /**
  * Created by Xingchen on 2016/1/7.
@@ -10,16 +15,10 @@ import android.os.Bundle;
  */
 public abstract class BaseActivity extends Activity {
   public ProgressDialog mProgressDialog = null;
-
-  @Override protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    init();
-  }
-
-  /**
-   * 在setContentView之前做一些初始化数据的操作
-   */
-  public abstract void init();
+  public ActionBar mActionBar = null;
+  public TextView mTitleTextView = null;
+  public ImageView mBackImageView = null;
+  public RelativeLayout mRightContainer;
 
   public void showProgressdialog(String message) {
     if (mProgressDialog == null) mProgressDialog = new ProgressDialog(BaseActivity.this);
@@ -33,5 +32,34 @@ public abstract class BaseActivity extends Activity {
 
   public void dissmissProgressDialog() {
     if (mProgressDialog != null) mProgressDialog.dismiss();
+  }
+
+  public void initActionbar(boolean left, boolean right, String title) {
+
+    mActionBar = getActionBar();
+    mActionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+    mActionBar.setCustomView(R.layout.layout_actionar);
+    mTitleTextView = (TextView) mActionBar.getCustomView().findViewById(R.id.tv_actionbar_title);
+    mTitleTextView.setText(title);
+    mBackImageView = (ImageView) mActionBar.getCustomView().findViewById(R.id.img_back);
+    mBackImageView.setVisibility(left ? View.VISIBLE : View.GONE);
+    mBackImageView.setOnClickListener(new View.OnClickListener() {
+      @Override public void onClick(View v) {
+        onBackPressed();
+      }
+    });
+    mRightContainer =
+        (RelativeLayout) mActionBar.getCustomView().findViewById(R.id.rlayout_right_container);
+    mRightContainer.setVisibility(right ? View.VISIBLE : View.GONE);
+    ButterKnife.bind(this);
+  }
+  public void onBackPressed() {
+    this.finish();
+  }
+  public void initActionbar(boolean left, boolean right){
+    initActionbar(left, right, "");
+  }
+  public void initActionbar(){
+    initActionbar(true,false,"");
   }
 }

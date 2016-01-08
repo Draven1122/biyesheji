@@ -5,4 +5,5 @@
   <color name="colorAccent">#FF4081</color>
   <color name="light_blue">#3998F7</color>
   <color name="transparent">#1000</color> <!--ARGB色-->
+  <color name="white">#fff</color>
 </resources>

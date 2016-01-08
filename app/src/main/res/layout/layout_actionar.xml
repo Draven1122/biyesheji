@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_blue">
+<ImageView
+    android:layout_marginLeft="7dp"
+    android:id="@+id/img_back"
+    android:layout_width="48px"
+    android:layout_height="48px"
+    android:src="@drawable/selector_actionbar_btn_back"
+    android:layout_centerVertical="true"
+    android:layout_alignParentLeft="true"
+    android:clickable="true"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_actionbar_title"
+        android:textColor="@color/white"
+        android:text="疾病自查"
+        android:textSize="21sp"
+        android:layout_centerInParent="true"/>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rlayout_right_container"></RelativeLayout>
+</RelativeLayout>
