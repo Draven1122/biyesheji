@@ -25,7 +25,7 @@ public class LoginActivity extends BaseActivity {
 
   @OnClick(R.id.btn_test) public void onTestButtonClicked(View view) {
     Data.service(IMedicalService.class)
-        .category().observeOn(Schedulers.io()).subscribeOn(AndroidSchedulers.mainThread())
+        .category().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
         .subscribe(result -> ToastManager.showToast(result.getTngou().get(0).getDescription()),Data.errorHanlder());
   }
 

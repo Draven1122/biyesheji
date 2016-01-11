@@ -7,11 +7,11 @@ import java.util.List;
  * Email:huangjinxin@zhical.cn
  */
 public class Result<T> {
-  private int status;
+  private boolean status;
   private List<T> tngou;
   private String msg;
 
-  public int getStatus() {
+  public boolean getStatus() {
     return status;
   }
 

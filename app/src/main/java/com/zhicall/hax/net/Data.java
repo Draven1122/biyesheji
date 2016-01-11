@@ -15,7 +15,7 @@ import rx.schedulers.Schedulers;
 /**
  * Created by Xingchen on 2016/1/11.
  * Email:huangjinxin@zhicall.cn
- * 关于json数据获取的方法
+ * 获取json数据获取的方法类
  */
 public final class Data {
   private static RestAdapter mInfoRestAdapter =                               //获取药品信息
