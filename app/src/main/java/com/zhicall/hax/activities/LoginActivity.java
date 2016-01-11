@@ -13,5 +13,6 @@ public class LoginActivity extends BaseActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_login);
     initActionbar(true,false,"登录");
+    
   }
 }

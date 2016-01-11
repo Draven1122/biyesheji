@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="github-client-1.9.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit.samples/github-client/1.9.0/bece3cad0c650339e1f68e293148307bdfeaca7f/github-client-1.9.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit.samples/github-client/1.9.0/505888800f07e6339e380350778681395551b430/github-client-1.9.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
