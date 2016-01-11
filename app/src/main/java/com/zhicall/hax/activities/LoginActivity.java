@@ -21,14 +21,14 @@ public class LoginActivity extends BaseActivity {
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_login);
-    initActionbar(true, false, "µÇÂ¼");
+    initActionbar(true, false, "Login");
   }
 
   @OnClick(R.id.btn_test) public void onTestButtonClicked(View view) {
     Subscription subscription = Data.service(IMedicalService.class)
         .category()
         .subscribeOn(Schedulers.io())
-        .observeOn(AndroidSchedulers.mainThread())
+        .observeOn(AndroidSchedulers.mainThread()).doOnSubscribe(this::showProgressdialog).finallyDo(this::dissmissProgressDialog)
         .subscribe(result -> ToastManager.showToast(result.getStatus()+""),
             Data.errorHanlder());
     mSubscriptionSet.add(subscription);
