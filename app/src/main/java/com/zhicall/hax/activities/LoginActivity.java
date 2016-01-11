@@ -21,7 +21,7 @@ public class LoginActivity extends BaseActivity {
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_login);
-    initActionbar(true, false, "ç™»å½•");
+    initActionbar(true, false, "µÇÂ¼");
   }
 
   @OnClick(R.id.btn_test) public void onTestButtonClicked(View view) {

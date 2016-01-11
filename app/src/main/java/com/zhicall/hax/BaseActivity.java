@@ -15,7 +15,7 @@ import rx.Observable;
 import rx.Subscription;
 
 /**
- * Activity鐨勯�氱敤鐖剁被锛屽凡缁忓啓濂戒簡涓�浜涘彲鑳界敤鍒扮殑鏂规硶
+ * Activity通用父类
  * Created by Xingchen on 2016/1/7.
  * Email:huangjinxin@zhicall.cn
  * qq:328674568
