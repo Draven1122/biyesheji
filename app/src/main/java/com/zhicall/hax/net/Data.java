@@ -22,7 +22,7 @@ public final class Data {
       new RestAdapter.Builder().setLogLevel(RestAdapter.LogLevel.FULL)
           .setEndpoint(MyApplication.getContext().getResources().getString(R.string.medical_url))
           .build();
-  private static Map services = new WeakHashMap<String, BaseService>();
+  private static Map services = new WeakHashMap<String, Object>();
 
   public static <T> Func1<Observable<T>, Observable<T>> flatmaper(Observable<T> mObservabler) {
     return new Func1<Observable<T>, Observable<T>>() {
@@ -35,10 +35,12 @@ public final class Data {
   public static <T> T service(Class<T> clazz) {
     T service = (T) services.get(clazz.getName());
     if (service == null) {
-      service = (T) mInfoRestAdapter.create(IMedicalService.class);
-      services.put(clazz, clazz.getName());
+      ToastManager.showToast("not find");
+      service = mInfoRestAdapter.create(clazz);
+      services.put( clazz.getName(),service);
       return service;
     }
+    ToastManager.showToast("find");
     return service;
   }
 

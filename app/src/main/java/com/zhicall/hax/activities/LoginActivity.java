@@ -29,7 +29,7 @@ public class LoginActivity extends BaseActivity {
         .category()
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(result -> ToastManager.showToast(result.getTngou().get(0).getDescription()),
+        .subscribe(result -> ToastManager.showToast(result.getStatus()+""),
             Data.errorHanlder());
     mSubscriptionSet.add(subscription);
   }
