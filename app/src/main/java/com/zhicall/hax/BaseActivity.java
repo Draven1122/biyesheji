@@ -26,7 +26,7 @@ public abstract class BaseActivity extends Activity {
     mProgressDialog.setMessage(message);
     mProgressDialog.show();
   }
-
+  public abstract void initView();
   public void showProgressdialog() {
     showProgressdialog("");
   }

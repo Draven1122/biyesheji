@@ -7,16 +7,24 @@ import butterknife.Bind;
 import com.zhicall.hax.BaseActivity;
 import com.zhicall.hax.R;
 
-/**APP首页
+/**
+ * APP首页
  * Created by Xingchen on 2016/1/7.
  * Email:huangjinxin@zhicall.cn
  */
 public class MainActivity extends BaseActivity {
   @Bind(R.id.rlayout_fragmengt_container) RelativeLayout mFragmentContainer;
+  @Bind(R.id.btn_home) Button mHomeButton;
+  private Button mCurrentButton;
+
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
     initActionbar(true, false, "首页");
-    Button mButton=new Button(this);
+  }
+
+  @Override public void initView() {
+    mCurrentButton = mHomeButton;
+    mCurrentButton.setSelected(true);
   }
 }
