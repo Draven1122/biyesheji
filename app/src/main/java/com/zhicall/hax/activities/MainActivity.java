@@ -1,6 +1,7 @@
 package com.zhicall.hax.activities;
 
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import butterknife.Bind;
 import com.zhicall.hax.BaseActivity;
@@ -15,6 +16,7 @@ public class MainActivity extends BaseActivity {
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    initActionbar(true,false,"首页");
+    initActionbar(true, false, "首页");
+    Button mButton=new Button(this);
   }
 }

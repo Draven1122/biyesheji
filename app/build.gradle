@@ -17,6 +17,21 @@ android {
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
   }
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+}
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath 'me.tatarka:gradle-retrolambda:2.5.0'
+  }
+}
+repositories {
+  mavenCentral()
 }
 repositories {
   maven {
@@ -37,3 +52,4 @@ dependencies {
   compile 'com.squareup.retrofit.samples:github-client:1.9.0'
   compile project(':mylibrary')
 }
+apply plugin: 'me.tatarka.retrolambda'
