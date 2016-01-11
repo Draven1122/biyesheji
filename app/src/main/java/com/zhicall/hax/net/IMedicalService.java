@@ -2,6 +2,7 @@ package com.zhicall.hax.net;
 
 import com.zhicall.hax.bean.MedicalCategory;
 import com.zhicall.hax.bean.Result;
+import java.util.List;
 import retrofit.http.GET;
 import retrofit.http.Headers;
 import rx.Observable;
@@ -13,5 +14,5 @@ import rx.Observable;
 public interface IMedicalService {
   @GET("/tngou/drug/classify")
   @Headers({"apikey:d99a9ad0a9531fcbd1bb3139651e7249"})
-  Observable<Result<MedicalCategory>> category();
+  Observable<Result<List<MedicalCategory>>> category();
 }

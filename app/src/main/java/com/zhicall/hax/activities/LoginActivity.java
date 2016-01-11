@@ -8,6 +8,7 @@ import com.zhicall.hax.R;
 import com.zhicall.hax.net.Data;
 import com.zhicall.hax.net.IMedicalService;
 import com.zhicall.hax.utils.ToastManager;
+import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -24,9 +25,13 @@ public class LoginActivity extends BaseActivity {
   }
 
   @OnClick(R.id.btn_test) public void onTestButtonClicked(View view) {
-    Data.service(IMedicalService.class)
-        .category().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-        .subscribe(result -> ToastManager.showToast(result.getTngou().get(0).getDescription()),Data.errorHanlder());
+    Subscription subscription = Data.service(IMedicalService.class)
+        .category()
+        .subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe(result -> ToastManager.showToast(result.getTngou().get(0).getDescription()),
+            Data.errorHanlder());
+    mSubscriptionSet.add(subscription);
   }
 
   @Override public void initView() {
