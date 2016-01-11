@@ -1,11 +1,18 @@
 package com.zhicall.hax.activities;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import butterknife.Bind;
+import butterknife.OnClick;
 import com.zhicall.hax.BaseActivity;
 import com.zhicall.hax.R;
+import com.zhicall.hax.fragments.HomeFragment;
+import com.zhicall.hax.fragments.InfoFragment;
 
 /**
  * APP首页
@@ -15,16 +22,51 @@ import com.zhicall.hax.R;
 public class MainActivity extends BaseActivity {
   @Bind(R.id.rlayout_fragmengt_container) RelativeLayout mFragmentContainer;
   @Bind(R.id.btn_home) Button mHomeButton;
+  private Fragment HomeFragment;
+  private Fragment InfoFragment;
   private Button mCurrentButton;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
     initActionbar(true, false, "首页");
+    initView();
   }
 
   @Override public void initView() {
     mCurrentButton = mHomeButton;
     mCurrentButton.setSelected(true);
+    mCurrentButton.setClickable(false);
+    FragmentManager fm = getFragmentManager();
+    FragmentTransaction transaction = fm.beginTransaction();
+    HomeFragment = new HomeFragment();
+    transaction.add(R.id.rlayout_fragmengt_container, HomeFragment);
+    transaction.commit();
+  }
+
+  @OnClick(R.id.btn_home) public void onHomeButtonCliked(View view) {
+    mCurrentButton.setSelected(false);
+    mCurrentButton.setClickable(true);
+    mCurrentButton= (Button) view;
+    mCurrentButton.setSelected(true);
+    view.setClickable(false);
+    FragmentManager fm = getFragmentManager();
+    FragmentTransaction transaction = fm.beginTransaction();
+    if (HomeFragment == null) HomeFragment = new HomeFragment();
+    transaction.replace(R.id.rlayout_fragmengt_container, HomeFragment);
+    transaction.commit();
+  }
+  @OnClick(R.id.btn_info)
+  public void onInfoButtonClicked(View view){
+    mCurrentButton.setSelected(false);
+    mCurrentButton.setClickable(true);
+    mCurrentButton= (Button) view;
+    mCurrentButton.setSelected(true);
+    view.setClickable(false);
+    FragmentManager fm = getFragmentManager();
+    FragmentTransaction transaction = fm.beginTransaction();
+    if (InfoFragment == null) InfoFragment = new InfoFragment();
+    transaction.replace(R.id.rlayout_fragmengt_container, InfoFragment);
+    transaction.commit();
   }
 }

@@ -8,8 +8,14 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import butterknife.ButterKnife;
+import java.util.Collections;
+import java.util.Set;
+import java.util.WeakHashMap;
+import rx.Observable;
+import rx.Subscription;
 
-/**Activity的通用父类，已经写好了一些可能用到的方法
+/**
+ * Activity的通用父类，已经写好了一些可能用到的方法
  * Created by Xingchen on 2016/1/7.
  * Email:huangjinxin@zhicall.cn
  * qq:328674568
@@ -20,13 +26,17 @@ public abstract class BaseActivity extends Activity {
   public TextView mTitleTextView = null;
   public ImageView mBackImageView = null;
   public RelativeLayout mRightContainer;
+  protected final Set<Subscription> mSubscriptionSet =
+      Collections.newSetFromMap(new WeakHashMap<>());
 
   public void showProgressdialog(String message) {
     if (mProgressDialog == null) mProgressDialog = new ProgressDialog(BaseActivity.this);
     mProgressDialog.setMessage(message);
     mProgressDialog.show();
   }
+
   public abstract void initView();
+
   public void showProgressdialog() {
     showProgressdialog("");
   }
@@ -38,7 +48,6 @@ public abstract class BaseActivity extends Activity {
   public void initActionbar(boolean left, boolean right, String title) {
 
     mActionBar = getActionBar();
-    //注意,没有这句代码设置自定义actionbar将不起作用
     mActionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
     mActionBar.setCustomView(R.layout.layout_actionar);
     mTitleTextView = (TextView) mActionBar.getCustomView().findViewById(R.id.tv_actionbar_title);
@@ -55,13 +64,29 @@ public abstract class BaseActivity extends Activity {
     mRightContainer.setVisibility(right ? View.VISIBLE : View.GONE);
     ButterKnife.bind(this);
   }
+
   public void onBackPressed() {
     this.finish();
   }
-  public void initActionbar(boolean left, boolean right){
+
+  public void initActionbar(boolean left, boolean right) {
     initActionbar(left, right, "");
   }
-  public void initActionbar(){
-    initActionbar(true,false,"");
+
+  public void initActionbar() {
+    initActionbar(true, false, "");
+  }
+
+  @Override protected void onDestroy() {
+    ButterKnife.unbind(this);
+    if (mProgressDialog != null) {
+      mProgressDialog.dismiss();
+      mProgressDialog.cancel();
+    }
+    mProgressDialog = null;
+    Observable.from(mSubscriptionSet)
+        .filter(subscription -> subscription != null && !subscription.isUnsubscribed())
+        .subscribe(Subscription::unsubscribe);
+    super.onDestroy();
   }
 }

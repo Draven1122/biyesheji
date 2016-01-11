@@ -8,15 +8,15 @@ import java.util.List;
  */
 public class Result<T> {
   private int status;
-  private List<T> data;
+  private List<T> tngou;
   private String msg;
 
   public int getStatus() {
     return status;
   }
 
-  public List<T> getData() {
-    return data;
+  public List<T> getTngou() {
+    return tngou;
   }
 
   public String getMsg() {

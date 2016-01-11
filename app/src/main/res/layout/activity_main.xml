@@ -16,7 +16,7 @@
       android:id="@+id/llayout_bottom_bar"
       android:layout_alignParentBottom="true"
       android:layout_width="match_parent"
-      android:layout_height="57dp"
+      android:layout_height="47dp"
       android:orientation="horizontal"
       >
     <Button
@@ -38,6 +38,7 @@
         android:text="信息查询"
         />
     <Button
+        android:id="@+id/btn_info"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"

@@ -18,6 +18,11 @@
         android:name=".activities.MainActivity"
         android:launchMode="singleTop"
         >
+    </activity>
+    <activity
+        android:name=".activities.LoginActivity"
+        android:launchMode="singleTop"
+        >
       <intent-filter>
         <action android:name="android.intent.action.MAIN"></action>
         <category android:name="android.intent.category.LAUNCHER"></category>
