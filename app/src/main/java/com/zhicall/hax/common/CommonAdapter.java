@@ -49,4 +49,8 @@ public abstract class CommonAdapter<T> extends BaseAdapter {
   public void addList(List<T> list) {
     mList.addAll(list);
   }
+
+  public List<T> getList() {
+    return mList;
+  }
 }

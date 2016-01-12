@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.squareup.picasso.Picasso;
@@ -63,6 +64,34 @@ public class InfoFragment extends Fragment {
     super();
   }
 
+  @OnClick(R.id.tv_laber_disease) public void onDiseaseTextViewCliked() {
+    mCurrentPage = 1;
+    mCurrentCategory = NEWS_CATEGORY_DISEASE;
+    toggleLine(0);
+    getDate(true);
+  }
+
+  @OnClick(R.id.tv_laber_drug) public void onDrugTextViewCliked() {
+    mCurrentPage = 1;
+    mCurrentCategory = NEWS_CATEGORY_DRUG;
+    toggleLine(1);
+    getDate(true);
+  }
+
+  @OnClick(R.id.tv_laber_medical) public void onMedicalTextViewCliked() {
+    mCurrentPage = 1;
+    mCurrentCategory = NEWS_CATEGORY_MEDICAL;
+    toggleLine(2);
+    getDate(true);
+  }
+
+  @OnClick(R.id.tv_laber_tips) public void onTipsextViewCliked() {
+    mCurrentPage = 1;
+    mCurrentCategory = NEWS_CATEGORY_TIPS;
+    toggleLine(3);
+    getDate(true);
+  }
+
   @Nullable @Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     if (view == null) view = inflater.inflate(R.layout.fragment_info, null);
@@ -71,12 +100,13 @@ public class InfoFragment extends Fragment {
     lineList.add(mLineView2);
     lineList.add(mLineView3);
     lineList.add(mLineView4);
+    toggleLine(0);
     mNewsSummartAdapter =
         new NewsSummartAdapter(getActivity(), mNewsSummaryList, R.layout.layout_news_summary);
     mPullToRefreshListView.setAdapter(mNewsSummartAdapter);
     if (isFresh) {
       mCurrentSubscription = Data.tianGouService(INewsService.class)
-          .getNewsSummary(0, mCurrentPage, PAGE_SIZE)
+          .getNewsSummary(NEWS_CATEGORY_DISEASE, mCurrentPage, PAGE_SIZE)
           .observeOn(AndroidSchedulers.mainThread())
           .subscribeOn(Schedulers.io())
           .subscribe(result -> {
@@ -90,7 +120,7 @@ public class InfoFragment extends Fragment {
           }, Data.errorHanlder());
       mPullToRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
         @Override public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-          ToastManager.showToast("点了");
+          ToastManager.showToast("item cliked" + position);
         }
       });
       mPullToRefreshListView.setOnRefreshListener(
@@ -115,7 +145,6 @@ public class InfoFragment extends Fragment {
     } else {
       mCurrentPage++;
     }
-
     mCurrentSubscription = Data.tianGouService(INewsService.class)
         .getNewsSummary(mCurrentCategory, mCurrentPage, PAGE_SIZE)
         .observeOn(AndroidSchedulers.mainThread())

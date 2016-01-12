@@ -14,7 +14,6 @@
       >
     <RelativeLayout
         android:background="@color/transparent_grey"
-
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -29,7 +28,7 @@
           android:gravity="center"
           />
       <View
-          android:visibility="invisible"
+          android:visibility="visible"
           android:id="@+id/v_line1"
           android:layout_width="match_parent"
           android:background="@color/light_blue"
@@ -55,6 +54,7 @@
           android:gravity="center"
           />
       <View
+          android:visibility="invisible"
           android:id="@+id/v_line2"
           android:layout_width="match_parent"
           android:background="@color/light_blue"
