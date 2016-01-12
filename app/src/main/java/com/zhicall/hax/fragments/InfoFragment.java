@@ -26,6 +26,7 @@ import com.zhicall.hax.net.INewsService;
 import com.zhicall.hax.utils.ToastManager;
 import java.util.ArrayList;
 import java.util.List;
+import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -52,6 +53,7 @@ public class InfoFragment extends Fragment {
   @Bind(R.id.v_line4) View mLineView4;
   private List<View> lineList = new ArrayList<View>();
   private List<NewsSummary> mNewsSummaryList = new ArrayList<NewsSummary>();
+  private Subscription mCurrentSubscription;
 
   @Override public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -73,7 +75,7 @@ public class InfoFragment extends Fragment {
         new NewsSummartAdapter(getActivity(), mNewsSummaryList, R.layout.layout_news_summary);
     mPullToRefreshListView.setAdapter(mNewsSummartAdapter);
     if (isFresh) {
-      Data.tianGouService(INewsService.class)
+      mCurrentSubscription = Data.tianGouService(INewsService.class)
           .getNewsSummary(0, mCurrentPage, PAGE_SIZE)
           .observeOn(AndroidSchedulers.mainThread())
           .subscribeOn(Schedulers.io())
@@ -106,13 +108,15 @@ public class InfoFragment extends Fragment {
   }
 
   private void getDate(boolean isFresh) {
+    //防止用户在下拉刷新读取数据的过程中切换新闻种类 导致的数据显示有误的问题
+    if (mCurrentSubscription != null) mCurrentSubscription.unsubscribe();
     if (isFresh) {
       mCurrentPage = 1;
     } else {
       mCurrentPage++;
     }
 
-    Data.tianGouService(INewsService.class)
+    mCurrentSubscription = Data.tianGouService(INewsService.class)
         .getNewsSummary(mCurrentCategory, mCurrentPage, PAGE_SIZE)
         .observeOn(AndroidSchedulers.mainThread())
         .subscribeOn(Schedulers.io())
@@ -121,13 +125,13 @@ public class InfoFragment extends Fragment {
           if (!result.isSuccess()) {
             throw new DravenException("Server is connected but no data back!");
           }
-          if (isFresh)
-          mNewsSummartAdapter.setList(result.getTngou());
-          else
-          mNewsSummartAdapter.addList(result.getTngou());
+          if (isFresh) {
+            mNewsSummartAdapter.setList(result.getTngou());
+          } else {
+            mNewsSummartAdapter.addList(result.getTngou());
+          }
           mNewsSummartAdapter.notifyDataSetChanged();
         }, Data.errorHanlder());
-
   }
 
   public void toggleLine(int position) {
