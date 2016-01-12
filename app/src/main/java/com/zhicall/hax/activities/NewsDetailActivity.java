@@ -13,7 +13,6 @@ import com.zhicall.hax.R;
 import com.zhicall.hax.bean.NewsSummary;
 import com.zhicall.hax.net.Data;
 import com.zhicall.hax.net.INewsService;
-import com.zhicall.hax.utils.ToastManager;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import rx.Subscription;
@@ -36,12 +35,11 @@ public class NewsDetailActivity extends BaseActivity {
     setContentView(R.layout.activity_news_detail);
     initActionbar(true, false, "Detail");
     mNewsSummary = (NewsSummary) getIntent().getExtras().getSerializable("newsSummary");
-    ToastManager.showToast(mNewsSummary.getTitle());
     Subscription subscription = Data.tianGouService(INewsService.class)
         .getNewsDetail(mNewsSummary.getId())
         .observeOn(AndroidSchedulers.mainThread())
         .subscribeOn(Schedulers.io())
-        .subscribe(result -> {
+        .doOnSubscribe(()->showProgressdialog("Loading...")).finallyDo(()->dissmissProgressDialog()).subscribe(result -> {
           if (!result.isSuccess()) {
             throw new DravenException("Server is connected but no data back");
           }
