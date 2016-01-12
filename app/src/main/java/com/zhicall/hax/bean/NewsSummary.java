@@ -1,10 +1,12 @@
 package com.zhicall.hax.bean;
 
+import java.io.Serializable;
+
 /**
  * Created by Xingchen on 2016/1/12.
  * Email:huangjinxin@zhicall.cn
  */
-public class NewsSummary {
+public class NewsSummary implements Serializable {
   int count;
   String description;
   int fcount;

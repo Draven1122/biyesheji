@@ -28,6 +28,10 @@
         android:launchMode="singleTop"
         >
     </activity>
+    <activity
+        android:name=".activities.NewsDetailActivity"
+        >
+    </activity>
   </application>
 
 </manifest>

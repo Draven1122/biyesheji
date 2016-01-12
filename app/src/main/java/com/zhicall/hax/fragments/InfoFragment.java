@@ -2,6 +2,7 @@ package com.zhicall.hax.fragments;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -19,12 +20,12 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.squareup.picasso.Picasso;
 import com.zhicall.hax.DravenException;
 import com.zhicall.hax.R;
+import com.zhicall.hax.activities.NewsDetailActivity;
 import com.zhicall.hax.bean.NewsSummary;
 import com.zhicall.hax.common.CommonAdapter;
 import com.zhicall.hax.common.CommonViewHolder;
 import com.zhicall.hax.net.Data;
 import com.zhicall.hax.net.INewsService;
-import com.zhicall.hax.utils.ToastManager;
 import java.util.ArrayList;
 import java.util.List;
 import rx.Subscription;
@@ -65,6 +66,7 @@ public class InfoFragment extends Fragment {
   }
 
   @OnClick(R.id.tv_laber_disease) public void onDiseaseTextViewCliked() {
+    mPullToRefreshListView.setRefreshing(true);
     mNewsSummartAdapter.getList().clear();
     mNewsSummartAdapter.notifyDataSetChanged();
     mCurrentPage = 1;
@@ -74,6 +76,7 @@ public class InfoFragment extends Fragment {
   }
 
   @OnClick(R.id.tv_laber_drug) public void onDrugTextViewCliked() {
+    mPullToRefreshListView.setRefreshing(true);
     mNewsSummartAdapter.getList().clear();
     mNewsSummartAdapter.notifyDataSetChanged();
     mCurrentPage = 1;
@@ -83,6 +86,7 @@ public class InfoFragment extends Fragment {
   }
 
   @OnClick(R.id.tv_laber_medical) public void onMedicalTextViewCliked() {
+    mPullToRefreshListView.setRefreshing(true);
     mNewsSummartAdapter.getList().clear();
     mNewsSummartAdapter.notifyDataSetChanged();
     mCurrentPage = 1;
@@ -92,6 +96,7 @@ public class InfoFragment extends Fragment {
   }
 
   @OnClick(R.id.tv_laber_tips) public void onTipsextViewCliked() {
+    mPullToRefreshListView.setRefreshing(true);
     mNewsSummartAdapter.getList().clear();
     mNewsSummartAdapter.notifyDataSetChanged();
     mCurrentPage = 1;
@@ -128,7 +133,11 @@ public class InfoFragment extends Fragment {
           }, Data.errorHanlder());
       mPullToRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
         @Override public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-          ToastManager.showToast("item cliked" + position);
+          Intent intent = new Intent(getActivity(), NewsDetailActivity.class);
+          Bundle bundle = new Bundle();
+          bundle.putSerializable("newsSummary", mNewsSummartAdapter.getItem(position));
+          intent.putExtras(bundle);
+          startActivity(intent);
         }
       });
       mPullToRefreshListView.setOnRefreshListener(

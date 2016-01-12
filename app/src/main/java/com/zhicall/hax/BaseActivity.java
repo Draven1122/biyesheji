@@ -4,6 +4,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -62,6 +63,15 @@ public abstract class BaseActivity extends Activity {
     mRightContainer =
         (RelativeLayout) mActionBar.getCustomView().findViewById(R.id.rlayout_right_container);
     mRightContainer.setVisibility(right ? View.VISIBLE : View.GONE);
+
+    View customView = mActionBar.getCustomView();
+    ViewGroup parent = (ViewGroup) (customView != null ? customView.getParent() : null);
+    if (parent != null) {
+      ViewGroup.LayoutParams lp = parent.getLayoutParams();
+      lp.width = ViewGroup.LayoutParams.MATCH_PARENT;
+      parent.setLayoutParams(lp);
+    }
+
     ButterKnife.bind(this);
   }
 
