@@ -7,10 +7,12 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.squareup.picasso.Picasso;
 import com.zhicall.hax.DravenException;
 import com.zhicall.hax.R;
 import com.zhicall.hax.bean.NewsSummary;
@@ -28,7 +30,9 @@ import rx.schedulers.Schedulers;
  * Email:huangjinxin@zhicall.cn
  */
 public class InfoFragment extends Fragment {
-  public final int PAGE_SIZE = 10;
+
+  private boolean isFresh = true;
+  public final int PAGE_SIZE = 15;
   public int CurrentPage = 1;
   private NewsSummartAdapter mNewsSummartAdapter;
   private View view;
@@ -56,20 +60,24 @@ public class InfoFragment extends Fragment {
     lineList.add(mLineView2);
     lineList.add(mLineView3);
     lineList.add(mLineView4);
-    mNewsSummartAdapter=new NewsSummartAdapter(getActivity(),mNewsSummaryList,R.layout.layout_news_summary);
+    mNewsSummartAdapter =
+        new NewsSummartAdapter(getActivity(), mNewsSummaryList, R.layout.layout_news_summary);
     mPullToRefreshListView.setAdapter(mNewsSummartAdapter);
-    Data.service(INewsService.class)
-        .getNewsSummary(0, CurrentPage, PAGE_SIZE)
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribeOn(Schedulers.io())
-        .subscribe(result -> {
-          if (result.isSuccess()){
-          mNewsSummaryList.addAll(result.getTngou());
-          mNewsSummartAdapter.notifyDataSetChanged();}
-          else {
-            throw new DravenException("请求访问有误");
-          }
-        },Data.errorHanlder());
+    if (isFresh) {
+      Data.service(INewsService.class)
+          .getNewsSummary(0, CurrentPage, PAGE_SIZE)
+          .observeOn(AndroidSchedulers.mainThread())
+          .subscribeOn(Schedulers.io())
+          .subscribe(result -> {
+            if (result.isSuccess()) {
+              mNewsSummaryList.addAll(result.getTngou());
+              mNewsSummartAdapter.notifyDataSetChanged();
+              isFresh = false;
+            } else {
+              throw new DravenException("请求访问有误");
+            }
+          }, Data.errorHanlder());
+    }
     return view;
   }
 
@@ -84,6 +92,7 @@ public class InfoFragment extends Fragment {
     ButterKnife.unbind(this);
     super.onDestroyView();
   }
+
   public class NewsSummartAdapter extends CommonAdapter<NewsSummary> {
 
     public NewsSummartAdapter(Context context, List<NewsSummary> list, int resID) {
@@ -94,8 +103,11 @@ public class InfoFragment extends Fragment {
     public void initView(NewsSummary newsSummary, int position, CommonViewHolder viewHolder) {
       TextView mTitleTextView = viewHolder.getView(R.id.tv_newsTitle);
       TextView mSummaryTextView = viewHolder.getView(R.id.tv_news_summary);
+      ImageView mIconImageView = viewHolder.getView(R.id.img_icon);
       mTitleTextView.setText(newsSummary.getTitle());
       mSummaryTextView.setText(newsSummary.getDescription());
+      String url="http://tnfs.tngou.net/img"+newsSummary.getImg();
+      Picasso.with(getActivity()).load(url).into(mIconImageView);
     }
   }
 }
