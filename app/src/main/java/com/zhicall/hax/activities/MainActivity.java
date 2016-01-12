@@ -15,6 +15,7 @@ import com.zhicall.hax.BaseActivity;
 import com.zhicall.hax.R;
 import com.zhicall.hax.fragments.HomeFragment;
 import com.zhicall.hax.fragments.InfoFragment;
+import com.zhicall.hax.utils.ToastManager;
 
 /**
  * APP首页
@@ -71,7 +72,11 @@ public class MainActivity extends BaseActivity {
     transaction.replace(R.id.rlayout_fragmengt_container, InfoFragment);
     transaction.commit();
   }
-
+  @OnClick(R.id.btn_profle)
+  public void onProfileButtonCliked(){
+    ToastManager.showToast("功能建设中...");
+    return;
+  }
   @Override public void onBackPressed() {
     AlertDialog dialog = new AlertDialog.Builder(this).setMessage("Are u sure to exit App?")
         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
