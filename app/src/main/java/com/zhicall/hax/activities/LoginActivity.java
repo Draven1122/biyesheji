@@ -25,11 +25,11 @@ public class LoginActivity extends BaseActivity {
   }
 
   @OnClick(R.id.btn_test) public void onTestButtonClicked(View view) {
-    Subscription subscription = Data.service(IMedicalService.class)
+    Subscription subscription = Data.tianGouService(IMedicalService.class)
         .category()
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread()).doOnSubscribe(this::showProgressdialog).finallyDo(this::dissmissProgressDialog)
-        .subscribe(result -> ToastManager.showToast(result.getStatus()+""),
+        .subscribe(result -> ToastManager.showToast(result.isSuccess()+""),
             Data.errorHanlder());
     mSubscriptionSet.add(subscription);
   }

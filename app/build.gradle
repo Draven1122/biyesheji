@@ -49,5 +49,7 @@ dependencies {
   compile 'com.squareup.retrofit.samples:github-client:1.9.0'
   compile project(':mylibrary')
   compile 'com.android.support:appcompat-v7:22.1.1'
+  compile 'com.squareup.picasso:picasso:2.5.2'
+
 }
 apply plugin: 'me.tatarka.retrolambda'
