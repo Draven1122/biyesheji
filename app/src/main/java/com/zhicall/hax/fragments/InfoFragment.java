@@ -9,9 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.squareup.picasso.Picasso;
 import com.zhicall.hax.DravenException;
@@ -35,7 +37,12 @@ public class InfoFragment extends Fragment {
 
   private boolean isFresh = true;
   public final int PAGE_SIZE = 15;
-  public int CurrentPage = 1;
+  public int mCurrentPage = 1;
+  public final int NEWS_CATEGORY_DRUG = 4;
+  public final int NEWS_CATEGORY_DISEASE = 7;
+  public final int NEWS_CATEGORY_MEDICAL = 2;
+  public final int NEWS_CATEGORY_TIPS = 3;
+  public int mCurrentCategory = NEWS_CATEGORY_DRUG;
   private NewsSummartAdapter mNewsSummartAdapter;
   private View view;
   @Bind(R.id.lstv_news) PullToRefreshListView mPullToRefreshListView;
@@ -67,7 +74,7 @@ public class InfoFragment extends Fragment {
     mPullToRefreshListView.setAdapter(mNewsSummartAdapter);
     if (isFresh) {
       Data.service(INewsService.class)
-          .getNewsSummary(0, CurrentPage, PAGE_SIZE)
+          .getNewsSummary(0, mCurrentPage, PAGE_SIZE)
           .observeOn(AndroidSchedulers.mainThread())
           .subscribeOn(Schedulers.io())
           .subscribe(result -> {
@@ -84,8 +91,43 @@ public class InfoFragment extends Fragment {
           ToastManager.showToast("点了");
         }
       });
+      mPullToRefreshListView.setOnRefreshListener(
+          new PullToRefreshBase.OnRefreshListener2<ListView>() {
+            @Override public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+              getDate(true);
+            }
+
+            @Override public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
+              getDate(false);
+            }
+          });
     }
     return view;
+  }
+
+  private void getDate(boolean isFresh) {
+    if (isFresh) {
+      mCurrentPage = 1;
+    } else {
+      mCurrentPage++;
+    }
+
+    Data.service(INewsService.class)
+        .getNewsSummary(mCurrentCategory, mCurrentPage, PAGE_SIZE)
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribeOn(Schedulers.io())
+        .finallyDo(() -> mPullToRefreshListView.onRefreshComplete())
+        .subscribe(result -> {
+          if (!result.isSuccess()) {
+            throw new DravenException("Server is connected but no data back!");
+          }
+          if (isFresh)
+          mNewsSummartAdapter.setList(result.getTngou());
+          else
+          mNewsSummartAdapter.addList(result.getTngou());
+          mNewsSummartAdapter.notifyDataSetChanged();
+        }, Data.errorHanlder());
+
   }
 
   public void toggleLine(int position) {

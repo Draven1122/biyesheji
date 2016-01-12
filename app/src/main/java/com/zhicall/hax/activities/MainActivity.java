@@ -31,7 +31,7 @@ public class MainActivity extends BaseActivity {
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    initActionbar(true, false, "首页");
+    initActionbar(true, false, "Home");
     initView();
   }
 
