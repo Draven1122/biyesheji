@@ -6,7 +6,9 @@
   <color name="dark_blue">#10599D</color>
   <color name="colorAccent">#FF4081</color>
   <color name="light_blue">#3998F7</color>
-  <color name="transparent">#1000</color> <!--ARGB色-->
+  <color name="transparent">#1000</color>
+  <!--ARGB色-->
   <color name="white">#fff</color>
   <color name="dark_grey">#808080</color>
+  <color name="black">#000</color>
 </resources>

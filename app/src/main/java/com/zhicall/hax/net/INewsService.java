@@ -18,7 +18,7 @@ public interface INewsService {
   @GET("/tngou/info/classify") @Headers({ "apikey:d99a9ad0a9531fcbd1bb3139651e7249" })
   Observable<Result<List<NewsCategory>>> getNewsCategory();
 
-  @GET("/tngou/info/classify") @Headers({ "apikey:d99a9ad0a9531fcbd1bb3139651e7249" })
+  @GET("/tngou/info/list") @Headers({ "apikey:d99a9ad0a9531fcbd1bb3139651e7249" })
   Observable<Result<List<NewsSummary>>> getNewsSummary(@Nullable @Query("id") int id,
       @Nullable @Query("page") int page, @Nullable @Query("rows") int rows);
 }

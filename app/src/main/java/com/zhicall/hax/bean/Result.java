@@ -9,14 +9,12 @@ public class Result<T> {
   private T tngou;
   private String msg;
 
-  public boolean getStatus() {
-    return status;
-  }
-
   public T getTngou() {
     return tngou;
   }
-
+  public boolean isSuccess(){
+    return  status;
+  }
   public String getMsg() {
     return msg;
   }

@@ -3,9 +3,10 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="60dp"
-    android:background="@color/light_blue"
+    android:background="@color/white"
     >
   <ImageView
+      android:id="@+id/img_icon"
       android:layout_margin="4dp"
       android:layout_width="45dp"
       android:layout_height="45dp"
@@ -21,11 +22,20 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:id="@+id/tv_newsTitle"
+        android:paddingLeft="5dp"
+        android:text="折是一个标题"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:paddingTop="2dp"
         />
-      <TextView
-          android:layout_width="match_parent"
-          android:layout_height="0dp"
-          android:layout_weight="1"
-          />
+    <TextView
+        android:paddingLeft="5dp"
+        android:id="@+id/tv_news_summary"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="这是一个摘要"
+        />
+
   </LinearLayout>
 </LinearLayout>

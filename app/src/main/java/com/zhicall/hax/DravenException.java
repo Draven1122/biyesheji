@@ -5,7 +5,7 @@ package com.zhicall.hax;
  * Email:huangjinxin@zhicall.cn
  */
 public class DravenException extends RuntimeException {
-  DravenException(String msg) {
+  public DravenException(String msg) {
     super(msg);
   }
 }
