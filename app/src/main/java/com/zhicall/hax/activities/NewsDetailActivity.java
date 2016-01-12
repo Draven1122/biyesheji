@@ -22,6 +22,7 @@ import rx.schedulers.Schedulers;
 /**
  * Created by Xingchen on 2016/1/12.
  * Email:huangjinxin@zhicall.cn
+ * qq:328674568
  */
 public class NewsDetailActivity extends BaseActivity {
   @Bind(R.id.tv_news_title) TextView mTitleTextView;
