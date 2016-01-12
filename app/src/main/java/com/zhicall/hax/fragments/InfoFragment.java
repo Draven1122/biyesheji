@@ -45,7 +45,7 @@ public class InfoFragment extends Fragment {
   public final int NEWS_CATEGORY_DISEASE = 7;
   public final int NEWS_CATEGORY_MEDICAL = 2;
   public final int NEWS_CATEGORY_TIPS = 3;
-  public int mCurrentCategory = NEWS_CATEGORY_DRUG;
+  public int mCurrentCategory = NEWS_CATEGORY_DISEASE;
   private NewsSummartAdapter mNewsSummartAdapter;
   private View view;
   @Bind(R.id.lstv_news) PullToRefreshListView mPullToRefreshListView;
