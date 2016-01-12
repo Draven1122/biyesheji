@@ -15,7 +15,7 @@ import com.zhicall.hax.fragments.HomeFragment;
 import com.zhicall.hax.fragments.InfoFragment;
 
 /**
- * APP首页
+ * APP��ҳ
  * Created by Xingchen on 2016/1/7.
  * Email:huangjinxin@zhicall.cn
  */
@@ -29,7 +29,7 @@ public class MainActivity extends BaseActivity {
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    initActionbar(true, false, "首页");
+    initActionbar(true, false, "��ҳ");
     initView();
   }
 
