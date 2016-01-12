@@ -118,6 +118,7 @@ public class InfoFragment extends Fragment {
       mNewsSummartAdapter =
           new NewsSummartAdapter(getActivity(), mNewsSummaryList, R.layout.layout_news_summary);
       mPullToRefreshListView.setAdapter(mNewsSummartAdapter);
+      mPullToRefreshListView.setRefreshing(true);
       mCurrentSubscription = Data.tianGouService(INewsService.class)
           .getNewsSummary(mCurrentCategory, mCurrentPage, PAGE_SIZE)
           .observeOn(AndroidSchedulers.mainThread())
