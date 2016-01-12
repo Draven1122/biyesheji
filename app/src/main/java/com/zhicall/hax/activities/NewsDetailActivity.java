@@ -1,6 +1,8 @@
 package com.zhicall.hax.activities;
 
 import android.os.Bundle;
+import android.text.Html;
+import android.text.Spanned;
 import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.Bind;
@@ -11,6 +13,7 @@ import com.zhicall.hax.R;
 import com.zhicall.hax.bean.NewsSummary;
 import com.zhicall.hax.net.Data;
 import com.zhicall.hax.net.INewsService;
+import com.zhicall.hax.utils.ToastManager;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import rx.Subscription;
@@ -33,6 +36,7 @@ public class NewsDetailActivity extends BaseActivity {
     setContentView(R.layout.activity_news_detail);
     initActionbar(true, false, "Detail");
     mNewsSummary = (NewsSummary) getIntent().getExtras().getSerializable("newsSummary");
+    ToastManager.showToast(mNewsSummary.getTitle());
     Subscription subscription = Data.tianGouService(INewsService.class)
         .getNewsDetail(mNewsSummary.getId())
         .observeOn(AndroidSchedulers.mainThread())
@@ -43,7 +47,8 @@ public class NewsDetailActivity extends BaseActivity {
           }
           mTitleTextView.setText(result.getTitle());
           mDateTextViews.setText(longToDate(result.getTime()));
-          mNewsDetailTextView.setText(result.getMessage());
+         Spanned mSpanned= Html.fromHtml(result.getMessage());
+          mNewsDetailTextView.setText(mSpanned);
           String url = "http://tnfs.tngou.net/img" + result.getImg();
           Picasso.with(NewsDetailActivity.this).load(url).into(mIconImageView);
         });

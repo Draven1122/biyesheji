@@ -26,6 +26,7 @@ import com.zhicall.hax.common.CommonAdapter;
 import com.zhicall.hax.common.CommonViewHolder;
 import com.zhicall.hax.net.Data;
 import com.zhicall.hax.net.INewsService;
+import com.zhicall.hax.utils.ToastManager;
 import java.util.ArrayList;
 import java.util.List;
 import rx.Subscription;
@@ -133,9 +134,10 @@ public class InfoFragment extends Fragment {
           }, Data.errorHanlder());
       mPullToRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
         @Override public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+          ToastManager.showToast(position);
           Intent intent = new Intent(getActivity(), NewsDetailActivity.class);
           Bundle bundle = new Bundle();
-          bundle.putSerializable("newsSummary", mNewsSummartAdapter.getItem(position));
+          bundle.putSerializable("newsSummary", mNewsSummartAdapter.getItem(position-1));
           intent.putExtras(bundle);
           startActivity(intent);
         }
