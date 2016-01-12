@@ -10,6 +10,12 @@ public class NewsSummary {
   int fcount;
   int id;
   String img;
+  /*
+  说明：img字段返回的是不完整的图片路径src，
+  需要在前面添加【http://tnfs.tngou.net/image】或者【http://tnfs.tngou.net/img】
+  前者可以再图片后面添加宽度和高度，如：http://tnfs.tngou.net/image/top/default.jpg_180x120
+  详情请参考：http://www.tngou.net/doc/info
+   */
   int infoclass;
   String keywords;
   int rcount;
