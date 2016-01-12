@@ -60,7 +60,7 @@ public class NewsDetailActivity extends BaseActivity {
   /**
    * @param lo 毫秒数
    * @return String yyyy-MM-dd HH:mm:ss
-   * @Description: long类型转换成日期
+   * @Description:根据毫秒数返回一个日期
    */
   public static String longToDate(long lo) {
     Date date = new Date(lo);
