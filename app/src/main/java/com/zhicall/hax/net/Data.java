@@ -32,15 +32,13 @@ public final class Data {
     };
   }
 
-  public static <T> T service(Class<T> clazz) {
+  public static <T> T tianGouService(Class<T> clazz) {
     T service = (T) services.get(clazz.getName());
     if (service == null) {
-      ToastManager.showToast("not find");
       service = mInfoRestAdapter.create(clazz);
-      services.put( clazz.getName(),service);
+      services.put(clazz.getName(), service);
       return service;
     }
-    ToastManager.showToast("find");
     return service;
   }
 

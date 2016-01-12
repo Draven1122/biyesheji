@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     >
   <LinearLayout
+      android:background="@color/white"
       android:id="@+id/llayout_tab"
       android:layout_width="match_parent"
       android:layout_height="36dp"
@@ -12,11 +13,14 @@
       android:orientation="horizontal"
       >
     <RelativeLayout
+        android:background="@color/transparent_grey"
+
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         >
       <TextView
+          android:background="@color/transparent_grey"
           android:textColor="@color/dark_grey"
           android:id="@+id/tv_laber_disease"
           android:layout_width="match_parent"
@@ -34,12 +38,15 @@
           />
     </RelativeLayout>
     <RelativeLayout
+        android:background="@color/transparent_grey"
+
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         >
       <TextView
           android:textColor="@color/dark_grey"
+          android:background="@color/transparent_grey"
 
           android:id="@+id/tv_laber_drug"
           android:layout_width="match_parent"
@@ -56,12 +63,15 @@
           />
     </RelativeLayout>
     <RelativeLayout
+        android:background="@color/transparent_grey"
+
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         >
       <TextView
           android:textColor="@color/dark_grey"
+          android:background="@color/transparent_grey"
 
           android:id="@+id/tv_laber_medical"
           android:layout_width="match_parent"
@@ -80,13 +90,15 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:background="@color/transparent_grey"
+
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         >
       <TextView
           android:textColor="@color/dark_grey"
-
+          android:background="@color/transparent_grey"
           android:id="@+id/tv_laber_tips"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
