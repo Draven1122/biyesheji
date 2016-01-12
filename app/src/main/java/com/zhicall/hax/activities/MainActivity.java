@@ -1,8 +1,10 @@
 package com.zhicall.hax.activities;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -47,7 +49,7 @@ public class MainActivity extends BaseActivity {
   @OnClick(R.id.btn_home) public void onHomeButtonCliked(View view) {
     mCurrentButton.setSelected(false);
     mCurrentButton.setClickable(true);
-    mCurrentButton= (Button) view;
+    mCurrentButton = (Button) view;
     mCurrentButton.setSelected(true);
     view.setClickable(false);
     FragmentManager fm = getFragmentManager();
@@ -56,11 +58,11 @@ public class MainActivity extends BaseActivity {
     transaction.replace(R.id.rlayout_fragmengt_container, HomeFragment);
     transaction.commit();
   }
-  @OnClick(R.id.btn_info)
-  public void onInfoButtonClicked(View view){
+
+  @OnClick(R.id.btn_info) public void onInfoButtonClicked(View view) {
     mCurrentButton.setSelected(false);
     mCurrentButton.setClickable(true);
-    mCurrentButton= (Button) view;
+    mCurrentButton = (Button) view;
     mCurrentButton.setSelected(true);
     view.setClickable(false);
     FragmentManager fm = getFragmentManager();
@@ -68,5 +70,16 @@ public class MainActivity extends BaseActivity {
     if (InfoFragment == null) InfoFragment = new InfoFragment();
     transaction.replace(R.id.rlayout_fragmengt_container, InfoFragment);
     transaction.commit();
+  }
+
+  @Override public void onBackPressed() {
+    AlertDialog dialog = new AlertDialog.Builder(this).setMessage("Are u sure to exit App?")
+        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+              @Override public void onClick(DialogInterface dialog, int which) {
+                MainActivity.super.onBackPressed();
+              }
+            })
+        .setNegativeButton("No", null)
+        .show();
   }
 }

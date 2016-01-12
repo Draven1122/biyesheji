@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.Bind;
@@ -20,6 +21,7 @@ import com.zhicall.hax.common.CommonAdapter;
 import com.zhicall.hax.common.CommonViewHolder;
 import com.zhicall.hax.net.Data;
 import com.zhicall.hax.net.INewsService;
+import com.zhicall.hax.utils.ToastManager;
 import java.util.ArrayList;
 import java.util.List;
 import rx.android.schedulers.AndroidSchedulers;
@@ -77,10 +79,14 @@ public class InfoFragment extends Fragment {
               throw new DravenException("请求访问有误");
             }
           }, Data.errorHanlder());
+      mPullToRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        @Override public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+          ToastManager.showToast("点了");
+        }
+      });
     }
     return view;
   }
-
   public void toggleLine(int position) {
     for (View view : lineList) {
       view.setVisibility(View.INVISIBLE);

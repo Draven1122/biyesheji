@@ -13,6 +13,7 @@
       android:layout_marginTop="7dp"
       android:layout_width="45dp"
       android:layout_height="45dp"
+      android:focusable="false"
       />
   <LinearLayout
       android:layout_width="match_parent"
