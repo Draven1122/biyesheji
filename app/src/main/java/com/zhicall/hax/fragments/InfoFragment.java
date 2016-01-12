@@ -87,6 +87,7 @@ public class InfoFragment extends Fragment {
     }
     return view;
   }
+
   public void toggleLine(int position) {
     for (View view : lineList) {
       view.setVisibility(View.INVISIBLE);
@@ -111,9 +112,13 @@ public class InfoFragment extends Fragment {
       TextView mSummaryTextView = viewHolder.getView(R.id.tv_news_summary);
       ImageView mIconImageView = viewHolder.getView(R.id.img_icon);
       mTitleTextView.setText(newsSummary.getTitle());
-      mSummaryTextView.setText(newsSummary.getDescription());
-      String url="http://tnfs.tngou.net/img"+newsSummary.getImg();
-      Picasso.with(getActivity()).load(url).into(mIconImageView);
+      String str = newsSummary.getDescription();
+      if (newsSummary.getDescription().length() > 23) {
+        str = newsSummary.getDescription().substring(0, 22) + "...";
+        mSummaryTextView.setText(str);
+        String url = "http://tnfs.tngou.net/img" + newsSummary.getImg();
+        Picasso.with(getActivity()).load(url).into(mIconImageView);
+      }
     }
   }
 }
