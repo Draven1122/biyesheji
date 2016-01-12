@@ -74,7 +74,7 @@ public class MainActivity extends BaseActivity {
   }
   @OnClick(R.id.btn_profle)
   public void onProfileButtonCliked(){
-    ToastManager.showToast("åŠŸèƒ½å»ºè®¾ä¸­...");
+    ToastManager.showToast("¹¦ÄÜ½¨ÉèÖĞ...");
     return;
   }
   @Override public void onBackPressed() {
