@@ -65,6 +65,8 @@ public class InfoFragment extends Fragment {
   }
 
   @OnClick(R.id.tv_laber_disease) public void onDiseaseTextViewCliked() {
+    mNewsSummartAdapter.getList().clear();
+    mNewsSummartAdapter.notifyDataSetChanged();
     mCurrentPage = 1;
     mCurrentCategory = NEWS_CATEGORY_DISEASE;
     toggleLine(0);
@@ -72,6 +74,8 @@ public class InfoFragment extends Fragment {
   }
 
   @OnClick(R.id.tv_laber_drug) public void onDrugTextViewCliked() {
+    mNewsSummartAdapter.getList().clear();
+    mNewsSummartAdapter.notifyDataSetChanged();
     mCurrentPage = 1;
     mCurrentCategory = NEWS_CATEGORY_DRUG;
     toggleLine(1);
@@ -79,6 +83,8 @@ public class InfoFragment extends Fragment {
   }
 
   @OnClick(R.id.tv_laber_medical) public void onMedicalTextViewCliked() {
+    mNewsSummartAdapter.getList().clear();
+    mNewsSummartAdapter.notifyDataSetChanged();
     mCurrentPage = 1;
     mCurrentCategory = NEWS_CATEGORY_MEDICAL;
     toggleLine(2);
@@ -86,6 +92,8 @@ public class InfoFragment extends Fragment {
   }
 
   @OnClick(R.id.tv_laber_tips) public void onTipsextViewCliked() {
+    mNewsSummartAdapter.getList().clear();
+    mNewsSummartAdapter.notifyDataSetChanged();
     mCurrentPage = 1;
     mCurrentCategory = NEWS_CATEGORY_TIPS;
     toggleLine(3);
@@ -96,15 +104,15 @@ public class InfoFragment extends Fragment {
       Bundle savedInstanceState) {
     if (view == null) view = inflater.inflate(R.layout.fragment_info, null);
     ButterKnife.bind(this, view);
-    lineList.add(mLineView1);
-    lineList.add(mLineView2);
-    lineList.add(mLineView3);
-    lineList.add(mLineView4);
-    toggleLine(0);
-    mNewsSummartAdapter =
-        new NewsSummartAdapter(getActivity(), mNewsSummaryList, R.layout.layout_news_summary);
-    mPullToRefreshListView.setAdapter(mNewsSummartAdapter);
     if (isFresh) {
+      lineList.add(mLineView1);
+      lineList.add(mLineView2);
+      lineList.add(mLineView3);
+      lineList.add(mLineView4);
+      toggleLine(0);
+      mNewsSummartAdapter =
+          new NewsSummartAdapter(getActivity(), mNewsSummaryList, R.layout.layout_news_summary);
+      mPullToRefreshListView.setAdapter(mNewsSummartAdapter);
       mCurrentSubscription = Data.tianGouService(INewsService.class)
           .getNewsSummary(NEWS_CATEGORY_DISEASE, mCurrentPage, PAGE_SIZE)
           .observeOn(AndroidSchedulers.mainThread())
