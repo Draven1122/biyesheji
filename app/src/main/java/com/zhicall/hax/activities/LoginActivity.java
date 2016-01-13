@@ -13,6 +13,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
+ * 登陆界面
  * Created by Xingchen on 2016/1/8.
  * Email:huangjinxin@zhicall.cn
  * qq:328674568
@@ -25,13 +26,7 @@ public class LoginActivity extends BaseActivity {
   }
 
   @OnClick(R.id.btn_test) public void onTestButtonClicked(View view) {
-    Subscription subscription = Data.tianGouService(IMedicalService.class)
-        .category()
-        .subscribeOn(Schedulers.io())
-        .observeOn(AndroidSchedulers.mainThread()).doOnSubscribe(this::showProgressdialog).finallyDo(this::dissmissProgressDialog)
-        .subscribe(result -> ToastManager.showToast(result.isSuccess()+""),
-            Data.errorHanlder());
-    mSubscriptionSet.add(subscription);
+
   }
 
   @Override public void initView() {

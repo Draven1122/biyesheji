@@ -3,8 +3,13 @@
     package="com.zhicall.hax"
     >
 
-  <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_LOGS"/>
 
   <application
       android:name=".MyApplication"
@@ -18,15 +23,15 @@
         android:name=".activities.MainActivity"
         android:launchMode="singleTop"
         >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN"></action>
-            <category android:name="android.intent.category.LAUNCHER"></category>
-        </intent-filter>
     </activity>
     <activity
         android:name=".activities.LoginActivity"
         android:launchMode="singleTop"
         >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN"></action>
+            <category android:name="android.intent.category.LAUNCHER"></category>
+        </intent-filter>
     </activity>
     <activity
         android:name=".activities.NewsDetailActivity"
