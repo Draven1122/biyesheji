@@ -57,12 +57,6 @@ public class NewsDetailActivity extends BaseActivity {
   @Override public void initView() {
 
   }
-
-  /**
-   * @param lo 毫秒数
-   * @return String yyyy-MM-dd HH:mm:ss
-   * @Description:根据毫秒数返回一个日期
-   */
   public static String longToDate(long lo) {
     Date date = new Date(lo);
     SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
