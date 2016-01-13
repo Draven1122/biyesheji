@@ -149,7 +149,6 @@ public class InfoFragment extends Fragment {
             }
 
             @Override public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
-              ToastManager.showToast("pull up");
               getDate(false);
             }
           });

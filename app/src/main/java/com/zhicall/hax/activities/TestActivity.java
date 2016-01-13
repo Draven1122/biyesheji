@@ -37,7 +37,7 @@ public class TestActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initData() {
 
     }
 }

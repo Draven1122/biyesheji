@@ -40,6 +40,7 @@ repositories {
 }
 dependencies {
   compile fileTree(include: ['*.jar'], dir: 'libs')
+  compile 'com.squareup.picasso:picasso:2.5.2'
   testCompile 'junit:junit:4.12'
   compile files('libs/KJFrameForAndroid_v2.245.jar')
   compile files('libs/butterknife-7.0.1.jar')
@@ -49,6 +50,11 @@ dependencies {
   compile 'com.squareup.retrofit.samples:github-client:1.9.0'
   compile project(':mylibrary')
   compile 'com.android.support:appcompat-v7:22.1.1'
-  compile 'com.squareup.picasso:picasso-parent:2.5.2'
+  //以下SDK开发者请根据需要自行选择
+  //bmob-sdk ：Bmob的android sdk包
+  compile 'cn.bmob.android:bmob-sdk:3.4.5'
+  //bmob-push：Bmob的推送包
+  compile 'cn.bmob.android:bmob-push:0.6'
+  compile files('libs/eventbus-2.4.0.jar')
 }
 apply plugin: 'me.tatarka.retrolambda'

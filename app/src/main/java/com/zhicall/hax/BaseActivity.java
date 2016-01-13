@@ -37,7 +37,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     mProgressDialog.show();
   }
 
-  public abstract void initView();
+  public abstract void initData();
 
   public void showProgressdialog() {
     showProgressdialog("");

@@ -84,7 +84,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:text="本次版本暂不提供用户注册。\n特别感谢：最强带线--唐鑫"
+        android:text="本次版本暂不提供用户注册"
+        android:textColor="@color/dark_grey"
+        />
+    <TextView
+        android:layout_marginTop="9dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:text="特别感谢：最强带线———唐鑫
+"
+        android:textColor="@color/dark_grey"
+        />
+    <TextView
+        android:layout_marginTop="9dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:text="版本号:1.1.1"
         android:textColor="@color/dark_grey"
         />
 </LinearLayout>

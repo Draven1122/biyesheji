@@ -1,10 +1,13 @@
 package com.zhicall.hax.bean;
 
+import com.google.gson.GsonBuilder;
+
 /**
  * Created by Xingchen on 2016/1/11.
  * Email:huangjinxin@zhicall.cn
  */
 public class MedicalCategory {
+
   String description;
   int drugclass;
   int id;
