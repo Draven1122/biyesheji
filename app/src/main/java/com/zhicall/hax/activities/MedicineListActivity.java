@@ -112,6 +112,7 @@ public class MedicineListActivity extends BaseActivity {
         .subscribe(list -> {
           if (list.size() < PAGE_SIZE) haxNextPage = false;
           if (isRefresh) {
+            ToastManager.showToast("Ë¢ÐÂ³É¹¦!");
             mMedicineList.clear();
             mMedicineList.addAll(list);
           } else {
