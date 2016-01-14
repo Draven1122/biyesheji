@@ -15,4 +15,12 @@ public class ToastManager {
   public static void showToast(int i) {
     showToast(i + "");
   }
+
+  public static void showShortToast(String msg) {
+    Toast.makeText(MyApplication.getContext(), msg, Toast.LENGTH_SHORT).show();
+  }
+
+  public static void showShortToast(int i) {
+    showShortToast(i + "");
+  }
 }
