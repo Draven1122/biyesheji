@@ -17,8 +17,10 @@ import com.zhicall.hax.common.CommonAdapter;
 import com.zhicall.hax.common.CommonViewHolder;
 import com.zhicall.hax.net.Data;
 import com.zhicall.hax.net.IMedicalService;
+import com.zhicall.hax.utils.ToastManager;
 import java.util.ArrayList;
 import java.util.List;
+import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -27,6 +29,7 @@ import rx.schedulers.Schedulers;
  * Email:huangjinxin@zhicall.cn
  */
 public class MedicineListActivity extends BaseActivity {
+  private boolean haxNextPage = true;
   private final int PAGE_SIZE = 30;
   private int currentPage = 1;
   private int MEDICINE_CATEGORY_ID = 0;
@@ -52,11 +55,15 @@ public class MedicineListActivity extends BaseActivity {
     mPullToRefreshListView.setOnRefreshListener(
         new PullToRefreshBase.OnRefreshListener2<ListView>() {
           @Override public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
-            getData(false);
+            getData(true);
           }
 
           @Override public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
-            getData(true);
+            if (!haxNextPage) {
+              ToastManager.showToast("没有更多了...");
+              return;
+            }
+            getData(false);
           }
         });
     if (mMedicalCategory == null) {
@@ -65,7 +72,25 @@ public class MedicineListActivity extends BaseActivity {
       mPullToRefreshListView.setEmptyView(mPullToRefreshListView);
     } else {
       MEDICINE_CATEGORY_ID = mMedicalCategory.getId();
-      getData(true);
+      Data.tianGouService(IMedicalService.class)
+          .medicineList(MEDICINE_CATEGORY_ID, currentPage, PAGE_SIZE)
+          .observeOn(AndroidSchedulers.mainThread())
+          .subscribeOn(Schedulers.io())
+          .map(reslute -> reslute.getTngou())
+          .doOnSubscribe(() -> showProgressdialog("正在获取药品列表..."))
+          .finallyDo(() -> {
+            dissmissProgressDialog();
+            mPullToRefreshListView.onRefreshComplete();
+          })
+          .subscribe(list -> {
+            if (false) {
+              mMedicineList.clear();
+              mMedicineList.addAll(list);
+            } else {
+              mMedicineList.addAll(list);
+            }
+            mMedicineListAdapter.notifyDataSetChanged();
+          });
     }
   }
 
@@ -75,17 +100,17 @@ public class MedicineListActivity extends BaseActivity {
     } else {
       currentPage++;
     }
-    Data.tianGouService(IMedicalService.class)
+    Subscription subscription = Data.tianGouService(IMedicalService.class)
         .medicineList(MEDICINE_CATEGORY_ID, currentPage, PAGE_SIZE)
         .observeOn(AndroidSchedulers.mainThread())
         .subscribeOn(Schedulers.io())
         .map(reslute -> reslute.getTngou())
-        .doOnSubscribe(() -> showProgressdialog("正在获取药品列表..."))
         .finallyDo(() -> {
           dissmissProgressDialog();
           mPullToRefreshListView.onRefreshComplete();
         })
         .subscribe(list -> {
+          if (list.size() < PAGE_SIZE) haxNextPage = false;
           if (isRefresh) {
             mMedicineList.clear();
             mMedicineList.addAll(list);
@@ -94,6 +119,7 @@ public class MedicineListActivity extends BaseActivity {
           }
           mMedicineListAdapter.notifyDataSetChanged();
         });
+    mSubscriptionSet.add(subscription);
   }
 
   public class MedicineListAdapter extends CommonAdapter<Medicine> {
