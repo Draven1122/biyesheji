@@ -2,9 +2,10 @@ package com.zhicall.hax.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import butterknife.Bind;
-import butterknife.OnItemClick;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.zhicall.hax.BaseActivity;
 import com.zhicall.hax.R;
@@ -41,7 +42,17 @@ public class MedicalCategoryActivity extends BaseActivity {
     mArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,
         mMedicalCategoryNameList);
     mPullToRefreshListView.setAdapter(mArrayAdapter);
+    mPullToRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+      @Override public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+        MedicalCategory mMedicalCategory = mMedicalCategoryList.get(position - 1);
+        Intent intent = new Intent(MedicalCategoryActivity.this, MedicineListActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("medicineCategory", mMedicalCategory);
+        intent.putExtras(bundle);
+        startActivity(intent);
+      }
+    });
     Subscription subscription = Data.tianGouService(IMedicalService.class)
         .category()
         .observeOn(AndroidSchedulers.mainThread())
@@ -71,15 +82,5 @@ public class MedicalCategoryActivity extends BaseActivity {
 
   @Override public void initView() {
 
-  }
-
-  @OnItemClick(R.id.lstv_medical_category) public void onItemCliked(int position) {
-
-    MedicalCategory mMedicalCategory = mMedicalCategoryList.get(position);
-    Intent intent = new Intent(this, MedicineListActivity.class);
-    Bundle bundle = new Bundle();
-    bundle.putSerializable("medicineCategory", mMedicalCategory);
-    intent.putExtras(bundle);
-    startActivity(intent);
   }
 }
