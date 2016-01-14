@@ -3,8 +3,10 @@ package com.zhicall.hax.activities;
 import android.content.Context;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import butterknife.Bind;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.squareup.picasso.Picasso;
 import com.zhicall.hax.BaseActivity;
@@ -46,6 +48,17 @@ public class MedicineListActivity extends BaseActivity {
     mMedicineListAdapter =
         new MedicineListAdapter(this, mMedicineList, R.layout.layout_medicine_list_item);
     mPullToRefreshListView.setAdapter(mMedicineListAdapter);
+    mPullToRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);
+    mPullToRefreshListView.setOnRefreshListener(
+        new PullToRefreshBase.OnRefreshListener2<ListView>() {
+          @Override public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+            getData(false);
+          }
+
+          @Override public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
+            getData(true);
+          }
+        });
     if (mMedicalCategory == null) {
       TextView label = new TextView(this);
       label.setText("ÔÝÎÞÄÚÈÝ");
@@ -74,7 +87,7 @@ public class MedicineListActivity extends BaseActivity {
         })
         .subscribe(list -> {
           if (isRefresh) {
-            mMedicineList .clear();
+            mMedicineList.clear();
             mMedicineList.addAll(list);
           } else {
             mMedicineList.addAll(list);
