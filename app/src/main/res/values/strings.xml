@@ -4,5 +4,8 @@
   <string name="medical_url">http://apis.baidu.com</string>
   <string name="locallhost_8080">http://192.168.130.2:8080</string>
   <string name="bmob_application_key">88eff16a579c857f795c737e757017b7</string>
-  <string name="medical_url_key"></string>
+
+  <string name="tiangou_img_url_prefix">http://tnfs.tngou.net/img</string>
+
+
 </resources>

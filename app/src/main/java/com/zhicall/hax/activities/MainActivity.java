@@ -30,6 +30,7 @@ import com.zhicall.hax.bmob.receivers.BmobPushReceiver;
 import com.zhicall.hax.event.BmobPushEvent;
 import com.zhicall.hax.fragments.HomeFragment;
 import com.zhicall.hax.fragments.InfoFragment;
+import com.zhicall.hax.fragments.SearchInfoFragment;
 import com.zhicall.hax.utils.ToastManager;
 
 /**
@@ -38,14 +39,13 @@ import com.zhicall.hax.utils.ToastManager;
  * Email:huangjinxin@zhicall.cn
  */
 public class MainActivity extends BaseActivity {
-    @Bind(R.id.rlayout_fragmengt_container)
-    RelativeLayout mFragmentContainer;
-    @Bind(R.id.btn_home)
-    Button mHomeButton;
-    private Fragment HomeFragment;
-    private Fragment InfoFragment;
-    private Button mCurrentButton;
 
+  @Bind(R.id.rlayout_fragmengt_container) RelativeLayout mFragmentContainer;
+  @Bind(R.id.btn_home) Button mHomeButton;
+  private Fragment mHomeFragment;
+  private Fragment mInfoFragment;
+  private Fragment mSearchFragment;
+  private Button mCurrentButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,21 +71,6 @@ public class MainActivity extends BaseActivity {
         transaction.add(R.id.rlayout_fragmengt_container, HomeFragment);
         transaction.commit();
     }
-
-    @OnClick(R.id.btn_home)
-    public void onHomeButtonCliked(View view) {
-        mCurrentButton.setSelected(false);
-        mCurrentButton.setClickable(true);
-        mCurrentButton = (Button) view;
-        mCurrentButton.setSelected(true);
-        view.setClickable(false);
-        FragmentManager fm = getFragmentManager();
-        FragmentTransaction transaction = fm.beginTransaction();
-        if (HomeFragment == null) HomeFragment = new HomeFragment();
-        transaction.replace(R.id.rlayout_fragmengt_container, HomeFragment);
-        transaction.commit();
-    }
-
     @OnClick(R.id.btn_info)
     public void onInfoButtonClicked(View view) {
         mCurrentButton.setSelected(false);
@@ -105,11 +90,7 @@ public class MainActivity extends BaseActivity {
         ToastManager.showToast("功能建设中...");
         return;
     }
-    @OnClick(R.id.btn_query)
-    public void onQueryButtonClicked(){
-        ToastManager.showToast("功能建设中...");
-        return;
-    }
+
     @Override
     public void onBackPressed() {
         AlertDialog dialog = new AlertDialog.Builder(this).setMessage("确定退出App吗?")
@@ -140,4 +121,35 @@ public class MainActivity extends BaseActivity {
         //加i是为了显示多条Notification
         notificationManager.notify(1, notification);
     }
+
+
+  @OnClick(R.id.btn_home) public void onHomeButtonCliked(View view) {
+    mCurrentButton.setSelected(false);
+    mCurrentButton.setClickable(true);
+    mCurrentButton = (Button) view;
+    mCurrentButton.setSelected(true);
+    view.setClickable(false);
+    FragmentManager fm = getFragmentManager();
+    FragmentTransaction transaction = fm.beginTransaction();
+    if (mHomeFragment == null) mHomeFragment = new HomeFragment();
+    transaction.replace(R.id.rlayout_fragmengt_container, mHomeFragment);
+    transaction.commit();
+  }
+
+  @OnClick(R.id.btn_query) public void onQueryButtonClicked(View view) {
+    mCurrentButton.setSelected(false);
+    mCurrentButton.setClickable(true);
+    mCurrentButton = (Button) view;
+    mCurrentButton.setSelected(true);
+    view.setClickable(false);
+    FragmentManager fm = getFragmentManager();
+    FragmentTransaction transaction = fm.beginTransaction();
+    if (mSearchFragment == null) mSearchFragment = new SearchInfoFragment();
+    transaction.replace(R.id.rlayout_fragmengt_container, mSearchFragment);
+    transaction.commit();
+  }
+
+
+
+
 }
