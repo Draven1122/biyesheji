@@ -37,6 +37,12 @@
         android:screenOrientation="portrait"
         >
     </activity>
+    <activity
+        android:label="药品列表"
+        android:name=".activities.MedicineListActivity"
+        android:screenOrientation="portrait"
+        >
+    </activity>
   </application>
 
 </manifest>
