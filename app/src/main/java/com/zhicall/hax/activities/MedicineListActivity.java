@@ -15,7 +15,6 @@ import com.zhicall.hax.common.CommonAdapter;
 import com.zhicall.hax.common.CommonViewHolder;
 import com.zhicall.hax.net.Data;
 import com.zhicall.hax.net.IMedicalService;
-import com.zhicall.hax.utils.ToastManager;
 import java.util.ArrayList;
 import java.util.List;
 import rx.android.schedulers.AndroidSchedulers;
@@ -69,11 +68,14 @@ public class MedicineListActivity extends BaseActivity {
         .subscribeOn(Schedulers.io())
         .map(reslute -> reslute.getTngou())
         .doOnSubscribe(() -> showProgressdialog("正在获取药品列表..."))
-        .finallyDo(() -> dissmissProgressDialog())
+        .finallyDo(() -> {
+          dissmissProgressDialog();
+          mPullToRefreshListView.onRefreshComplete();
+        })
         .subscribe(list -> {
-          ToastManager.showToast(list.size());
           if (isRefresh) {
-            mMedicineList = list;
+            mMedicineList .clear();
+            mMedicineList.addAll(list);
           } else {
             mMedicineList.addAll(list);
           }
