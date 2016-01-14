@@ -49,11 +49,13 @@
         android:textColor="@color/white"
         android:text="医讯"
         />
+
+
     <Button
         android:textSize="17sp"
         android:id="@+id/btn_profle"
-        android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:layout_width="0dp"
         android:layout_weight="1"
         android:background="@drawable/select_btn_bottom_bar"
         android:textColor="@color/white"
