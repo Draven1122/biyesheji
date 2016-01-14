@@ -1,10 +1,13 @@
 package com.zhicall.hax.net;
 
+import android.support.annotation.Nullable;
 import com.zhicall.hax.bean.MedicalCategory;
+import com.zhicall.hax.bean.Medicine;
 import com.zhicall.hax.bean.Result;
 import java.util.List;
 import retrofit.http.GET;
 import retrofit.http.Headers;
+import retrofit.http.Query;
 import rx.Observable;
 
 /**
@@ -12,7 +15,10 @@ import rx.Observable;
  * Email:huangjinxin@zhicall.cn
  */
 public interface IMedicalService {
-  @GET("/tngou/drug/classify")
-  @Headers({"apikey:d99a9ad0a9531fcbd1bb3139651e7249"})
+  @GET("/tngou/drug/classify") @Headers({ "apikey:d99a9ad0a9531fcbd1bb3139651e7249" })
   Observable<Result<List<MedicalCategory>>> category();
+
+  @GET("/tngou/drug/list") @Headers({ "apikey:d99a9ad0a9531fcbd1bb3139651e7249" })
+  Observable<Result<List<Medicine>>> medicineList(@Nullable @Query("id") int id,
+      @Query("page") int page, @Query("rows") int pagesize);
 }

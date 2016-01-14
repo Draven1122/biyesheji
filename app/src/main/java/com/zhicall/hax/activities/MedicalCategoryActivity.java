@@ -1,8 +1,10 @@
 package com.zhicall.hax.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import butterknife.Bind;
+import butterknife.OnItemClick;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.zhicall.hax.BaseActivity;
 import com.zhicall.hax.R;
@@ -24,7 +26,8 @@ import rx.schedulers.Schedulers;
 public class MedicalCategoryActivity extends BaseActivity {
   @Bind(R.id.lstv_medical_category) PullToRefreshListView mPullToRefreshListView;
   ArrayAdapter<String> mArrayAdapter;
-  List<String> mMedicalCategoryList=new ArrayList<>();
+  List<String> mMedicalCategoryNameList = new ArrayList<>();
+  List<MedicalCategory> mMedicalCategoryList = new ArrayList<>();
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -35,9 +38,9 @@ public class MedicalCategoryActivity extends BaseActivity {
 
   public void init() {
 
-      mArrayAdapter =
-          new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mMedicalCategoryList);
-      mPullToRefreshListView.setAdapter(mArrayAdapter);
+    mArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,
+        mMedicalCategoryNameList);
+    mPullToRefreshListView.setAdapter(mArrayAdapter);
 
     Subscription subscription = Data.tianGouService(IMedicalService.class)
         .category()
@@ -47,6 +50,7 @@ public class MedicalCategoryActivity extends BaseActivity {
         .flatMap(new Func1<List<MedicalCategory>, Observable<MedicalCategory>>() {
           @Override
           public Observable<MedicalCategory> call(List<MedicalCategory> medicalCategories) {
+            mMedicalCategoryList = medicalCategories;
             return Observable.from(medicalCategories);
           }
         })
@@ -59,7 +63,7 @@ public class MedicalCategoryActivity extends BaseActivity {
         .doOnSubscribe(() -> showProgressdialog("正在获取药品分类信息..."))
         .finallyDo(() -> dissmissProgressDialog())
         .subscribe(list -> {
-          mMedicalCategoryList.addAll(list);
+          mMedicalCategoryNameList.addAll(list);
           mArrayAdapter.notifyDataSetChanged();
         }, Data.errorHanlder());
     mSubscriptionSet.add(subscription);
@@ -67,5 +71,15 @@ public class MedicalCategoryActivity extends BaseActivity {
 
   @Override public void initView() {
 
+  }
+
+  @OnItemClick(R.id.lstv_medical_category) public void onItemCliked(int position) {
+
+    MedicalCategory mMedicalCategory = mMedicalCategoryList.get(position);
+    Intent intent = new Intent(this, MedicineListActivity.class);
+    Bundle bundle = new Bundle();
+    bundle.putSerializable("medicineCategory", mMedicalCategory);
+    intent.putExtras(bundle);
+    startActivity(intent);
   }
 }

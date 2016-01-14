@@ -1,10 +1,12 @@
 package com.zhicall.hax.bean;
 
+import java.io.Serializable;
+
 /**
  * Created by Xingchen on 2016/1/11.
  * Email:huangjinxin@zhicall.cn
  */
-public class MedicalCategory {
+public class MedicalCategory implements Serializable {
   String description;
   int drugclass;
   int id;
