@@ -2,5 +2,6 @@
   <string name="app_name">Draven</string>
   <string name="action_settings">Settings</string>
   <string name="medical_url">http://apis.baidu.com</string>
+  <string name="tiangou_img_url_prefix">http://tnfs.tngou.net/img</string>
   <string name="medical_url_key"></string>
 </resources>
