@@ -32,6 +32,11 @@
         android:name=".activities.NewsDetailActivity"
         >
     </activity>
+    <activity
+        android:name=".activities.MedicalCategoryActivity"
+        android:screenOrientation="portrait"
+        >
+    </activity>
   </application>
 
 </manifest>

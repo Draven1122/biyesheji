@@ -15,6 +15,7 @@ import com.zhicall.hax.BaseActivity;
 import com.zhicall.hax.R;
 import com.zhicall.hax.fragments.HomeFragment;
 import com.zhicall.hax.fragments.InfoFragment;
+import com.zhicall.hax.fragments.SearchInfoFragment;
 import com.zhicall.hax.utils.ToastManager;
 
 /**
@@ -25,8 +26,9 @@ import com.zhicall.hax.utils.ToastManager;
 public class MainActivity extends BaseActivity {
   @Bind(R.id.rlayout_fragmengt_container) RelativeLayout mFragmentContainer;
   @Bind(R.id.btn_home) Button mHomeButton;
-  private Fragment HomeFragment;
-  private Fragment InfoFragment;
+  private Fragment mHomeFragment;
+  private Fragment mInfoFragment;
+  private Fragment mSearchFragment;
   private Button mCurrentButton;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +44,8 @@ public class MainActivity extends BaseActivity {
     mCurrentButton.setClickable(false);
     FragmentManager fm = getFragmentManager();
     FragmentTransaction transaction = fm.beginTransaction();
-    HomeFragment = new HomeFragment();
-    transaction.add(R.id.rlayout_fragmengt_container, HomeFragment);
+    mHomeFragment = new HomeFragment();
+    transaction.add(R.id.rlayout_fragmengt_container, mHomeFragment);
     transaction.commit();
   }
 
@@ -55,8 +57,21 @@ public class MainActivity extends BaseActivity {
     view.setClickable(false);
     FragmentManager fm = getFragmentManager();
     FragmentTransaction transaction = fm.beginTransaction();
-    if (HomeFragment == null) HomeFragment = new HomeFragment();
-    transaction.replace(R.id.rlayout_fragmengt_container, HomeFragment);
+    if (mHomeFragment == null) mHomeFragment = new HomeFragment();
+    transaction.replace(R.id.rlayout_fragmengt_container, mHomeFragment);
+    transaction.commit();
+  }
+
+  @OnClick(R.id.btn_query) public void onQueryButtonClicked(View view) {
+    mCurrentButton.setSelected(false);
+    mCurrentButton.setClickable(true);
+    mCurrentButton = (Button) view;
+    mCurrentButton.setSelected(true);
+    view.setClickable(false);
+    FragmentManager fm = getFragmentManager();
+    FragmentTransaction transaction = fm.beginTransaction();
+    if (mSearchFragment == null) mSearchFragment = new SearchInfoFragment();
+    transaction.replace(R.id.rlayout_fragmengt_container, mSearchFragment);
     transaction.commit();
   }
 
@@ -68,22 +83,23 @@ public class MainActivity extends BaseActivity {
     view.setClickable(false);
     FragmentManager fm = getFragmentManager();
     FragmentTransaction transaction = fm.beginTransaction();
-    if (InfoFragment == null) InfoFragment = new InfoFragment();
-    transaction.replace(R.id.rlayout_fragmengt_container, InfoFragment);
+    if (mInfoFragment == null) mInfoFragment = new InfoFragment();
+    transaction.replace(R.id.rlayout_fragmengt_container, mInfoFragment);
     transaction.commit();
   }
-  @OnClick(R.id.btn_profle)
-  public void onProfileButtonCliked(){
+
+  @OnClick(R.id.btn_profle) public void onProfileButtonCliked() {
     ToastManager.showToast("功能建设中...");
     return;
   }
+
   @Override public void onBackPressed() {
     AlertDialog dialog = new AlertDialog.Builder(this).setMessage("Are u sure to exit App?")
         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-              @Override public void onClick(DialogInterface dialog, int which) {
-                MainActivity.super.onBackPressed();
-              }
-            })
+          @Override public void onClick(DialogInterface dialog, int which) {
+            MainActivity.super.onBackPressed();
+          }
+        })
         .setNegativeButton("No", null)
         .show();
   }
