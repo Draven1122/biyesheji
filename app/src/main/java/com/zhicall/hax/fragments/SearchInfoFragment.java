@@ -30,7 +30,6 @@ public class SearchInfoFragment extends Fragment {
   @Nullable @Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     if (view == null) view = inflater.inflate(R.layout.fragment_search_info, null);
-    //如果是第一次进入fragment则需要添加点击事件等操作
     if (isFresh) {
       ButterKnife.bind(this, view);
     }

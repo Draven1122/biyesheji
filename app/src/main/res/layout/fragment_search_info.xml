@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_grey"
     >
   <RelativeLayout
+      android:layout_alignParentTop="true"
       android:background="@color/white"
       android:id="@+id/rlayout_drug_database"
       android:layout_width="match_parent"
@@ -51,4 +51,4 @@
           android:src="@drawable/right_arrow"
           />
   </RelativeLayout>
-</LinearLayout>
+</RelativeLayout>

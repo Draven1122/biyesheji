@@ -157,7 +157,6 @@ public class InfoFragment extends Fragment {
   }
 
   private void getDate(boolean isRefresh) {
-    //防止用户在下拉刷新读取数据的过程中切换新闻种类 导致的数据显示有误的问题
     if (mCurrentSubscription != null) mCurrentSubscription.unsubscribe();
     if (isRefresh) {
       mCurrentPage = 1;

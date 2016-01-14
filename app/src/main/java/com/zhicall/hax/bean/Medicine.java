@@ -58,15 +58,3 @@ public class Medicine implements Serializable {
     return type;
   }
 }
-/*
-            "description": "骨癌",
-            "fcount": 0,
-            "id": 12356,
-            "img": "/drug/081010/d1d4f40d981a65a3072bb7ab6eb1ab5f.jpg",
-            "keywords": "多发性骨髓瘤 综合症 名称 商品名称 英文名称 ",
-            "name": "来那度胺胶囊",
-            "price": 0,
-            "rcount": 0,
-            "tag": "骨癌",
-            "type": "化学药品"
- */

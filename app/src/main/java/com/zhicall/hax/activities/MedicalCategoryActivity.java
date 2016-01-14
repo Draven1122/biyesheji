@@ -71,7 +71,7 @@ public class MedicalCategoryActivity extends BaseActivity {
           }
         })
         .toList()
-        .doOnSubscribe(() -> showProgressdialog("正在获取药品分类信息..."))
+        .doOnSubscribe(() -> showProgressdialog("正在获取药品信息..."))
         .finallyDo(() -> dissmissProgressDialog())
         .subscribe(list -> {
           mMedicalCategoryNameList.addAll(list);
@@ -80,7 +80,8 @@ public class MedicalCategoryActivity extends BaseActivity {
     mSubscriptionSet.add(subscription);
   }
 
-  @Override public void initView() {
+    @Override
+    public void initData() {
 
-  }
+    }
 }

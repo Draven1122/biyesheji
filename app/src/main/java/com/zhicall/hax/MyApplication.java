@@ -27,11 +27,10 @@ public class MyApplication extends Application {
   @Override public void onCreate() {
     super.onCreate();
     mContext = this;
-    //初始化bmob
+
     Bmob.initialize(this, getResources().getString(R.string.bmob_application_key ));
 
     BmobInstallation.getCurrentInstallation(this).save();
-    // 启动推送服务
     BmobPush.startWork(this, getResources().getString(R.string.bmob_application_key ));
 
   }

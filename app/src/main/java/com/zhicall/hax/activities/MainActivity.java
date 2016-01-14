@@ -67,8 +67,8 @@ public class MainActivity extends BaseActivity {
         mCurrentButton.setClickable(false);
         FragmentManager fm = getFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
-        HomeFragment = new HomeFragment();
-        transaction.add(R.id.rlayout_fragmengt_container, HomeFragment);
+        mHomeFragment = new HomeFragment();
+        transaction.add(R.id.rlayout_fragmengt_container, mHomeFragment);
         transaction.commit();
     }
     @OnClick(R.id.btn_info)
@@ -80,8 +80,8 @@ public class MainActivity extends BaseActivity {
         view.setClickable(false);
         FragmentManager fm = getFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
-        if (InfoFragment == null) InfoFragment = new InfoFragment();
-        transaction.replace(R.id.rlayout_fragmengt_container, InfoFragment);
+        if (mInfoFragment == null) mInfoFragment = new InfoFragment();
+        transaction.replace(R.id.rlayout_fragmengt_container, mInfoFragment);
         transaction.commit();
     }
 
