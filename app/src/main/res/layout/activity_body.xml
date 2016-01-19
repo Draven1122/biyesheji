@@ -4,6 +4,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
+  <LinearLayout
+      android:layout_marginTop="5dp"
+      android:layout_marginLeft="5dp"
+      android:layout_marginRight="5dp"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      >
+    <EditText
+        android:background="@drawable/home_search_btn_normal"
+        android:id="@+id/et_disease_keywords"
+        android:layout_width="0dp"
+        android:layout_weight="4.5"
+        android:layout_height="40dp"
+        android:hint="输入疾病关键词搜索"
+        />
+    <Button
+        android:id="@+id/btn_seaserch"
+        android:layout_width="0dp"
+        android:layout_weight="1.5"
+        android:layout_height="40dp"
+        android:layout_gravity="center_vertical"
+        android:text="搜索"
+        />
+
+  </LinearLayout>
   <com.handmark.pulltorefresh.library.PullToRefreshExpandableListView
       android:layout_width="match_parent"
       android:layout_height="match_parent"
