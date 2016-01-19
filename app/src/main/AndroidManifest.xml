@@ -49,6 +49,12 @@
         android:screenOrientation="portrait"
         >
     </activity>
+    <activity
+        android:label="样品详情"
+        android:name=".activities.MedicineDetailActivity"
+        android:screenOrientation="portrait"
+        >
+    </activity>
   </application>
 
 </manifest>

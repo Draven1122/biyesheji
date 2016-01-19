@@ -1,7 +1,10 @@
 package com.zhicall.hax.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -66,6 +69,16 @@ public class MedicineListActivity extends BaseActivity {
             getData(false);
           }
         });
+    mPullToRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+      @Override public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Medicine medicine = mMedicineList.get(position);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("medicine", medicine);
+        Intent intent = new Intent(MedicineListActivity.this, MedicineDetailActivity.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
+      }
+    });
     if (mMedicalCategory == null) {
       TextView label = new TextView(this);
       label.setText("ÔÝÎÞÄÚÈÝ");
