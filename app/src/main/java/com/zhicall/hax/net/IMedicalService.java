@@ -16,7 +16,7 @@ import rx.Observable;
  */
 public interface IMedicalService {
   @GET("/tngou/drug/classify") @Headers({ "apikey:d99a9ad0a9531fcbd1bb3139651e7249" })
-  Observable<Result<List<MedicalCategory>>> category();
+  Observable<Result<List<MedicalCategory>>> category(@Nullable @Query("id") int id);
 
   @GET("/tngou/drug/list") @Headers({ "apikey:d99a9ad0a9531fcbd1bb3139651e7249" })
   Observable<Result<List<Medicine>>> medicineList(@Nullable @Query("id") int id,

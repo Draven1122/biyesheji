@@ -26,7 +26,7 @@ public class LoginActivity extends BaseActivity {
 
   @OnClick(R.id.btn_test) public void onTestButtonClicked(View view) {
     Subscription subscription = Data.tianGouService(IMedicalService.class)
-        .category()
+        .category(0)
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread()).doOnSubscribe(this::showProgressdialog).finallyDo(this::dissmissProgressDialog)
         .subscribe(result -> ToastManager.showToast(result.isSuccess()+""),

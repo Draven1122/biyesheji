@@ -43,6 +43,12 @@
         android:screenOrientation="portrait"
         >
     </activity>
+    <activity
+        android:label="药品二级分类"
+        android:name=".activities.MedicalCategory2Activity"
+        android:screenOrientation="portrait"
+        >
+    </activity>
   </application>
 
 </manifest>
