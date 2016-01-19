@@ -17,6 +17,11 @@ public class Medicine implements Serializable {
   int rcount;
   String tag;
   String type;
+  String message;
+
+  public String getMessage() {
+    return message;
+  }
 
   public String getTag() {
     return tag;

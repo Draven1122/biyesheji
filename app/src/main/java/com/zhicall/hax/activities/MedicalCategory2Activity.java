@@ -21,15 +21,15 @@ import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
- * Created by Xingchen on 2016/1/14.
+ * Created by Xingchen on 2016/1/19.
  * Email:huangjinxin@zhicall.cn
  */
-public class MedicalCategoryActivity extends BaseActivity {
+public class MedicalCategory2Activity extends BaseActivity {
   @Bind(R.id.lstv_medical_category) PullToRefreshListView mPullToRefreshListView;
   ArrayAdapter<String> mArrayAdapter;
   List<String> mMedicalCategoryNameList = new ArrayList<>();
   List<MedicalCategory> mMedicalCategoryList = new ArrayList<>();
-
+  MedicalCategory mMedicalCategory;
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_medical_category);
@@ -38,7 +38,7 @@ public class MedicalCategoryActivity extends BaseActivity {
   }
 
   public void init() {
-
+    mMedicalCategory= (MedicalCategory) getIntent().getExtras().getSerializable("medicineCategory");
     mArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,
         mMedicalCategoryNameList);
     mPullToRefreshListView.setAdapter(mArrayAdapter);
@@ -46,7 +46,7 @@ public class MedicalCategoryActivity extends BaseActivity {
       @Override public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
         MedicalCategory mMedicalCategory = mMedicalCategoryList.get(position - 1);
-        Intent intent = new Intent(MedicalCategoryActivity.this, MedicalCategory2Activity.class);
+        Intent intent = new Intent(MedicalCategory2Activity.this, MedicineListActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("medicineCategory", mMedicalCategory);
         intent.putExtras(bundle);
@@ -54,7 +54,7 @@ public class MedicalCategoryActivity extends BaseActivity {
       }
     });
     Subscription subscription = Data.tianGouService(IMedicalService.class)
-        .category(0)
+        .category(mMedicalCategory.getId())
         .observeOn(AndroidSchedulers.mainThread())
         .subscribeOn(Schedulers.io())
         .map(result -> result.getTngou())
@@ -71,7 +71,7 @@ public class MedicalCategoryActivity extends BaseActivity {
           }
         })
         .toList()
-        .doOnSubscribe(() -> showProgressdialog("正在获取药品信息..."))
+        .doOnSubscribe(() -> showProgressdialog("正在获取二级分类信息..."))
         .finallyDo(() -> dissmissProgressDialog())
         .subscribe(list -> {
           mMedicalCategoryNameList.addAll(list);
@@ -80,5 +80,7 @@ public class MedicalCategoryActivity extends BaseActivity {
     mSubscriptionSet.add(subscription);
   }
 
-    @Override
-    public void initData() {
+  @Override public void initData() {
+
+  }
+}

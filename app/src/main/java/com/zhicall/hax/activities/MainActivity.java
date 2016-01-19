@@ -122,7 +122,6 @@ public class MainActivity extends BaseActivity {
         notificationManager.notify(1, notification);
     }
 
-
   @OnClick(R.id.btn_home) public void onHomeButtonCliked(View view) {
     mCurrentButton.setSelected(false);
     mCurrentButton.setClickable(true);
@@ -148,8 +147,5 @@ public class MainActivity extends BaseActivity {
     transaction.replace(R.id.rlayout_fragmengt_container, mSearchFragment);
     transaction.commit();
   }
-
-
-
 
 }

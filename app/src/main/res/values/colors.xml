@@ -13,4 +13,5 @@
   <color name="black">#000</color>
   <color name="transparent_grey">#88ECECEC</color>
   <color name="background_grey">#F7F5F2</color>
+  <color name="red">#f00</color>
 </resources>

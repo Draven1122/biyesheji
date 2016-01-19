@@ -1,7 +1,10 @@
 package com.zhicall.hax.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -33,7 +36,7 @@ public class MedicineListActivity extends BaseActivity {
   private final int PAGE_SIZE = 30;
   private int currentPage = 1;
   private int MEDICINE_CATEGORY_ID = 0;
-  @Bind(R.id.lstv_medicine) PullToRefreshListView mPullToRefreshListView;
+  public @Bind(R.id.lstv_medicine) PullToRefreshListView mPullToRefreshListView;
   private List<Medicine> mMedicineList = new ArrayList<>();
   private MedicalCategory mMedicalCategory;
   private MedicineListAdapter mMedicineListAdapter = null;
@@ -59,27 +62,37 @@ public class MedicineListActivity extends BaseActivity {
                     getData(true);
                 }
 
-                @Override
-                public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
-                    if (!haxNextPage) {
-                        ToastManager.showToast("没有更多数据...");
-                        return;
-                    }
-                    getData(false);
-                }
-            });
+<<
+          @Override public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
+            if (!haxNextPage)
+              ToastManager.showToast("没有更多数据...");
+            getData(false);
+          }
+        });
+    mPullToRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+      @Override public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Medicine medicine = mMedicineList.get(position);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("medicine", medicine);
+        Intent intent = new Intent(MedicineListActivity.this, MedicineDetailActivity.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
+      }
+    });
     if (mMedicalCategory == null) {
       TextView label = new TextView(this);
-      label.setText("没有数据哦...");
-      mPullToRefreshListView.setEmptyView(mPullToRefreshListView);
+      label.setText("暂无内容");
+      mPullToRefreshListView.setEmptyView(label);
     } else {
       MEDICINE_CATEGORY_ID = mMedicalCategory.getId();
-      Data.tianGouService(IMedicalService.class)
+      Subscription msSubscription = Data.tianGouService(IMedicalService.class)
           .medicineList(MEDICINE_CATEGORY_ID, currentPage, PAGE_SIZE)
           .observeOn(AndroidSchedulers.mainThread())
           .subscribeOn(Schedulers.io())
           .map(reslute -> reslute.getTngou())
-          .doOnSubscribe(() -> showProgressdialog("正在获取药品列表..."))
+          .doOnSubscribe(() -> {
+            showProgressdialog("正在获取药品列表...");
+          })
           .finallyDo(() -> {
             dissmissProgressDialog();
             mPullToRefreshListView.onRefreshComplete();
@@ -92,7 +105,8 @@ public class MedicineListActivity extends BaseActivity {
               mMedicineList.addAll(list);
             }
             mMedicineListAdapter.notifyDataSetChanged();
-          });
+          }, Data.errorHanlder());
+      mSubscriptionSet.add(msSubscription);
     }
   }
 
@@ -121,7 +135,7 @@ public class MedicineListActivity extends BaseActivity {
             mMedicineList.addAll(list);
           }
           mMedicineListAdapter.notifyDataSetChanged();
-        });
+        }, Data.errorHanlder());
     mSubscriptionSet.add(subscription);
   }
 

@@ -5,6 +5,7 @@
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/zhicall/hax/MyApplication.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/zhicall/hax/activities/LoginActivity.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/zhicall/hax/activities/MainActivity.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/zhicall/hax/activities/MedicalCategory2Activity.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/zhicall/hax/activities/MedicalCategoryActivity.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/zhicall/hax/activities/MedicineListActivity.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/zhicall/hax/activities/NewsDetailActivity.java" charset="UTF-8" />
