@@ -17,6 +17,7 @@ import com.zhicall.hax.net.Data;
 import com.zhicall.hax.net.IMedicalService;
 import java.util.ArrayList;
 import java.util.List;
+import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -43,7 +44,7 @@ public class BodyActivity extends BaseActivity {
     mBodyAdapter = new BodyAdapter();
     mExpandableListView = mPullToRefreshExpandableListView.getRefreshableView();
     mExpandableListView.setAdapter(mBodyAdapter);
-    Data.tianGouService(IMedicalService.class)
+    Subscription mSubscription=Data.tianGouService(IMedicalService.class)
         .body()
         .observeOn(AndroidSchedulers.mainThread())
         .subscribeOn(Schedulers.io())
@@ -57,6 +58,7 @@ public class BodyActivity extends BaseActivity {
           mBodyList.addAll(list);
           mBodyAdapter.notifyDataSetChanged();
         }, Data.errorHanlder());
+    mSubscriptionSet.add(mSubscription);
     mExpandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
       @Override public boolean onChildClick(ExpandableListView parent, View v, int groupPosition,
           int childPosition, long id) {
@@ -69,6 +71,7 @@ public class BodyActivity extends BaseActivity {
         return false;
       }
     });
+
   }
 
   public class BodyAdapter extends BaseExpandableListAdapter {

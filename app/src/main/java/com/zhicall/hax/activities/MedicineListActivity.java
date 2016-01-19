@@ -36,7 +36,7 @@ public class MedicineListActivity extends BaseActivity {
   private final int PAGE_SIZE = 30;
   private int currentPage = 1;
   private int MEDICINE_CATEGORY_ID = 0;
-  @Bind(R.id.lstv_medicine) PullToRefreshListView mPullToRefreshListView;
+  public @Bind(R.id.lstv_medicine) PullToRefreshListView mPullToRefreshListView;
   private List<Medicine> mMedicineList = new ArrayList<>();
   private MedicalCategory mMedicalCategory;
   private MedicineListAdapter mMedicineListAdapter = null;
@@ -62,11 +62,9 @@ public class MedicineListActivity extends BaseActivity {
           }
 
           @Override public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
-            if (!haxNextPage) {
-              ToastManager.showToast("没有更多了...");
-            }
-              getData(false);
-
+            if (!haxNextPage)
+              ToastManager.showToast("没有更多数据...");
+            getData(false);
           }
         });
     mPullToRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -82,15 +80,17 @@ public class MedicineListActivity extends BaseActivity {
     if (mMedicalCategory == null) {
       TextView label = new TextView(this);
       label.setText("暂无内容");
-      mPullToRefreshListView.setEmptyView(mPullToRefreshListView);
+      mPullToRefreshListView.setEmptyView(label);
     } else {
       MEDICINE_CATEGORY_ID = mMedicalCategory.getId();
-      Data.tianGouService(IMedicalService.class)
+      Subscription msSubscription = Data.tianGouService(IMedicalService.class)
           .medicineList(MEDICINE_CATEGORY_ID, currentPage, PAGE_SIZE)
           .observeOn(AndroidSchedulers.mainThread())
           .subscribeOn(Schedulers.io())
           .map(reslute -> reslute.getTngou())
-          .doOnSubscribe(() -> showProgressdialog("正在获取药品列表..."))
+          .doOnSubscribe(() -> {
+            showProgressdialog("正在获取药品列表...");
+          })
           .finallyDo(() -> {
             dissmissProgressDialog();
             mPullToRefreshListView.onRefreshComplete();
@@ -103,7 +103,8 @@ public class MedicineListActivity extends BaseActivity {
               mMedicineList.addAll(list);
             }
             mMedicineListAdapter.notifyDataSetChanged();
-          });
+          }, Data.errorHanlder());
+      mSubscriptionSet.add(msSubscription);
     }
   }
 
@@ -132,7 +133,7 @@ public class MedicineListActivity extends BaseActivity {
             mMedicineList.addAll(list);
           }
           mMedicineListAdapter.notifyDataSetChanged();
-        });
+        }, Data.errorHanlder());
     mSubscriptionSet.add(subscription);
   }
 

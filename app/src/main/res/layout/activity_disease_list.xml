@@ -9,5 +9,5 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/lstv_disease"
-    ptr:ptrMode="both"></com.handmark.pulltorefresh.library.PullToRefreshListView>
+    ptr:ptrMode="pullFromEnd"></com.handmark.pulltorefresh.library.PullToRefreshListView>
 </LinearLayout>
