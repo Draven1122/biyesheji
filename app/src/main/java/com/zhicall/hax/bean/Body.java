@@ -1,12 +1,13 @@
 package com.zhicall.hax.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Xingchen on 2016/1/19.
  * Email:huangjinxin@zhicall.cn
  */
-public class Body {
+public class Body implements Serializable {
   String description;
   int id;
   String keywords;

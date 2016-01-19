@@ -1,5 +1,6 @@
 package com.zhicall.hax.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +15,6 @@ import com.zhicall.hax.R;
 import com.zhicall.hax.bean.Body;
 import com.zhicall.hax.net.Data;
 import com.zhicall.hax.net.IMedicalService;
-import com.zhicall.hax.utils.ToastManager;
 import java.util.ArrayList;
 import java.util.List;
 import rx.android.schedulers.AndroidSchedulers;
@@ -60,8 +60,12 @@ public class BodyActivity extends BaseActivity {
     mExpandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
       @Override public boolean onChildClick(ExpandableListView parent, View v, int groupPosition,
           int childPosition, long id) {
-        ToastManager.showToast(
-            "U select:" + mBodyList.get(groupPosition).getPlaces().get(childPosition).getName());
+        Body mBody = mBodyList.get(groupPosition).getPlaces().get(childPosition);
+        Intent mIntent = new Intent(BodyActivity.this, DiseaseListActivity.class);
+        Bundle mBundle = new Bundle();
+        mBundle.putSerializable("body", mBody);
+        mIntent.putExtras(mBundle);
+        startActivity(mIntent);
         return false;
       }
     });

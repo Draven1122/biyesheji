@@ -32,5 +32,6 @@ public interface IMedicalService {
   Observable<Result<List<Body>>> body();
 
   @GET("/tngou/disease/place") @Headers({ "apikey:d99a9ad0a9531fcbd1bb3139651e7249" })
-  Observable<Result<List<Disease>>> diseaseByBody();
+  Observable<Result<List<Disease>>> diseaseByBody(@Nullable @Query("id") int id,
+      @Query("page") int page, @Query("rows") int pagesize);
 }

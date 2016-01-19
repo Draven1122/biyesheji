@@ -1,10 +1,12 @@
 package com.zhicall.hax.bean;
 
+import java.io.Serializable;
+
 /**
  * Created by Xingchen on 2016/1/19.
  * Email:huangjinxin@zhicall.cn
  */
-public class Disease {
+public class Disease implements Serializable{
   int count;
   String department;
   String description;

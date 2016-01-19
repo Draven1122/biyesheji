@@ -9,7 +9,7 @@
   <application
       android:name=".MyApplication"
       android:allowBackup="true"
-      android:icon="@mipmap/ic_launcher"
+      android:icon="@mipmap/icon_ehr_tool_weight"
       android:label="@string/app_name"
       android:supportsRtl="true"
       android:theme="@style/Theme.AppCompat.Light"
@@ -58,6 +58,12 @@
     <activity
         android:label="身体部位"
         android:name=".activities.BodyActivity"
+        android:screenOrientation="portrait"
+        >
+    </activity>
+    <activity
+        android:label="疾病列表"
+        android:name=".activities.DiseaseListActivity"
         android:screenOrientation="portrait"
         >
     </activity>
