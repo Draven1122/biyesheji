@@ -45,10 +45,10 @@ public class MedicineListActivity extends BaseActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_medicine_list);
     initActionbar(true, false, "MedicineList");
-    initView();
+    initData();
   }
 
-  @Override public void initView() {
+  @Override public void initData() {
     mMedicalCategory =
         (MedicalCategory) getIntent().getExtras().getSerializable("medicineCategory");
     mMedicineListAdapter =

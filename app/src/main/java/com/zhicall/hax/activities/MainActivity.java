@@ -35,10 +35,10 @@ public class MainActivity extends BaseActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
     initActionbar(true, false, "Home");
-    initView();
+    initData();
   }
 
-  @Override public void initView() {
+  @Override public void initData() {
     mCurrentButton = mHomeButton;
     mCurrentButton.setSelected(true);
     mCurrentButton.setClickable(false);

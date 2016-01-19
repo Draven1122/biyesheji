@@ -35,10 +35,10 @@ public class BodyActivity extends BaseActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_body);
     initActionbar(true, false, "身体部位");
-    initView();
+    initData();
   }
 
-  @Override public void initView() {
+  @Override public void initData() {
     mLayoutInflater = LayoutInflater.from(this);
     mBodyAdapter = new BodyAdapter();
     mExpandableListView = mPullToRefreshExpandableListView.getRefreshableView();

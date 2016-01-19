@@ -53,7 +53,7 @@ public class NewsDetailActivity extends BaseActivity {
     mSubscriptionSet.add(subscription);
   }
 
-  @Override public void initView() {
+  @Override public void initData() {
 
   }
   public static String longToDate(long lo) {

@@ -80,7 +80,7 @@ public class MedicalCategory2Activity extends BaseActivity {
     mSubscriptionSet.add(subscription);
   }
 
-  @Override public void initView() {
+  @Override public void initData() {
 
   }
 }

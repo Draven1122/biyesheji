@@ -30,10 +30,10 @@ public class MedicineDetailActivity extends BaseActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_medicine_detail);
     initActionbar(true, false, "药品详情");
-    initView();
+    initData();
   }
 
-  @Override public void initView() {
+  @Override public void initData() {
     mMedicine = (Medicine) getIntent().getExtras().getSerializable("medicine");
     String url = getResources().getString(R.string.tiangou_img_url_prefix) + mMedicine.getImg();
     Picasso.with(this).load(url).into(mIconImageView);

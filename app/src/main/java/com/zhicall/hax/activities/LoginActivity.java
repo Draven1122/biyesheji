@@ -34,7 +34,7 @@ public class LoginActivity extends BaseActivity {
     mSubscriptionSet.add(subscription);
   }
 
-  @Override public void initView() {
+  @Override public void initData() {
 
   }
 }
