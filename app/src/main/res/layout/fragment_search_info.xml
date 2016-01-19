@@ -3,12 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_grey"
     android:padding="5dp"
+    android:background="@color/white"
     >
   <RelativeLayout
       android:layout_alignParentTop="true"
-      android:background="@color/white"
+      android:background="@drawable/sp_search_fragment_item"
       android:id="@+id/rlayout_drug_database"
       android:layout_width="match_parent"
       android:layout_height="80dp"
