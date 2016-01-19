@@ -64,9 +64,9 @@ public class MedicineListActivity extends BaseActivity {
           @Override public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
             if (!haxNextPage) {
               ToastManager.showToast("没有更多了...");
-              return;
             }
-            getData(false);
+              getData(false);
+
           }
         });
     mPullToRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
