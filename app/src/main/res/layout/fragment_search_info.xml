@@ -52,4 +52,51 @@
           android:src="@drawable/right_arrow"
           />
   </RelativeLayout>
+    <RelativeLayout
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/rlayout_drug_database"
+        android:background="@drawable/sp_search_fragment_item"
+        android:id="@+id/rlayout_disease_database"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        >
+        <ImageView
+            android:id="@+id/img_icon_disease"
+            android:layout_width="80px"
+            android:layout_height="80px"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/icon_disease"/>
+        <LinearLayout
+            android:background="@color/white"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_toRightOf="@+id/img_icon_disease"
+            android:layout_marginLeft="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_centerVertical="true"
+                android:textSize="19sp"
+                android:text="疾病库"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="疾病查询系统"
+                android:textSize="15sp"
+                android:textColor="@color/dark_grey"/>
+        </LinearLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="17dp"
+            android:src="@drawable/right_arrow"
+            />
+    </RelativeLayout>
 </RelativeLayout>

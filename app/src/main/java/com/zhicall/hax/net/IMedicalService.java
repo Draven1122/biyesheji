@@ -1,6 +1,7 @@
 package com.zhicall.hax.net;
 
 import android.support.annotation.Nullable;
+import com.zhicall.hax.bean.Body;
 import com.zhicall.hax.bean.MedicalCategory;
 import com.zhicall.hax.bean.Medicine;
 import com.zhicall.hax.bean.Result;
@@ -24,4 +25,7 @@ public interface IMedicalService {
 
   @GET("/tngou/drug/show") @Headers({ "apikey:d99a9ad0a9531fcbd1bb3139651e7249" })
   Observable<Medicine> medicineDetail(@Query("id") int id);
+
+  @GET("/tngou/disease/pclassify") @Headers({ "apikey:d99a9ad0a9531fcbd1bb3139651e7249" })
+  Observable<Result<List<Body>>> body();
 }

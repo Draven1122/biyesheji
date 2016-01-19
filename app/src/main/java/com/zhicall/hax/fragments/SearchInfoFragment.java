@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.zhicall.hax.R;
+import com.zhicall.hax.activities.BodyActivity;
 import com.zhicall.hax.activities.MedicalCategoryActivity;
 import com.zhicall.hax.bean.MedicalCategory;
 import java.util.List;
@@ -39,6 +40,11 @@ public class SearchInfoFragment extends Fragment {
 
   @OnClick(R.id.rlayout_drug_database) public void onDrugDataBaseRelativelayoutCliked() {
     Intent intent = new Intent(getActivity(), MedicalCategoryActivity.class);
+    startActivity(intent);
+  }
+
+  @OnClick(R.id.rlayout_disease_database) public void onDiseaseBaseRelayoutiveLayoutClicked() {
+    Intent intent = new Intent(getActivity(), BodyActivity.class);
     startActivity(intent);
   }
 }

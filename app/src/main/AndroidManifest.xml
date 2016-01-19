@@ -55,6 +55,12 @@
         android:screenOrientation="portrait"
         >
     </activity>
+    <activity
+        android:label="身体部位"
+        android:name=".activities.BodyActivity"
+        android:screenOrientation="portrait"
+        >
+    </activity>
   </application>
 
 </manifest>
