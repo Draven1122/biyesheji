@@ -62,7 +62,7 @@ public class MedicineListActivity extends BaseActivity {
                     getData(true);
                 }
 
-<<
+
           @Override public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
             if (!haxNextPage)
               ToastManager.showToast("没有更多数据...");
