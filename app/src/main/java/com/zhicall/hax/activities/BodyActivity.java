@@ -48,8 +48,11 @@ public class BodyActivity extends BaseActivity {
         .observeOn(AndroidSchedulers.mainThread())
         .subscribeOn(Schedulers.io())
         .map(result -> result.getTngou())
-        .doOnSubscribe(() -> showProgressdialog("正在获取身体部位列表..."))
-        .finallyDo(this::dissmissProgressDialog)
+        .doOnSubscribe(() -> showProgressdialog("Loading..."))
+        .finallyDo(() -> {
+          this.dissmissProgressDialog();
+          if (mBodyList.size() > 1) mExpandableListView.expandGroup(0);
+        })
         .subscribe(list -> {
           mBodyList.addAll(list);
           mBodyAdapter.notifyDataSetChanged();
@@ -58,7 +61,7 @@ public class BodyActivity extends BaseActivity {
       @Override public boolean onChildClick(ExpandableListView parent, View v, int groupPosition,
           int childPosition, long id) {
         ToastManager.showToast(
-            "你选择了:" + mBodyList.get(groupPosition).getPlaces().get(childPosition).getName());
+            "U select:" + mBodyList.get(groupPosition).getPlaces().get(childPosition).getName());
         return false;
       }
     });
