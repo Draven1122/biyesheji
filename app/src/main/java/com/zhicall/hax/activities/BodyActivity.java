@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
@@ -31,7 +30,6 @@ import rx.schedulers.Schedulers;
  * Email:huangjinxin@zhicall.cn
  */
 public class BodyActivity extends BaseActivity {
-  @Bind(R.id.btn_seaserch) Button mSearchButton;
   @Bind(R.id.et_disease_keywords) EditText mSearchEditText;
   @Bind(R.id.lstv_body) PullToRefreshExpandableListView mPullToRefreshExpandableListView;
   private List<Body> mBodyList = new ArrayList<>();
@@ -44,6 +42,10 @@ public class BodyActivity extends BaseActivity {
     setContentView(R.layout.activity_body);
     initActionbar(true, false, "Body");
     initData();
+  }
+
+  @OnClick(R.id.img_delete) public void onDeleteImageViewCliked() {
+    mSearchEditText.setText("");
   }
 
   @OnClick(R.id.btn_seaserch) public void onSearchButtonCliked() {
