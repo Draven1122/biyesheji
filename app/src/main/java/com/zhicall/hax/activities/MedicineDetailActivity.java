@@ -19,6 +19,7 @@ import rx.schedulers.Schedulers;
  * Email:huangjinxin@zhicall.cn
  */
 public class MedicineDetailActivity extends BaseActivity {
+
   @Bind(R.id.img_icon) ImageView mIconImageView;
   @Bind(R.id.tv_medicine_name) TextView mMedicineNameTextView;
   @Bind(R.id.tv_medicine_desc) TextView mMedicineDescTextView;
@@ -35,7 +36,11 @@ public class MedicineDetailActivity extends BaseActivity {
 
   @Override public void initData() {
     mMedicine = (Medicine) getIntent().getExtras().getSerializable("medicine");
-    String url = getResources().getString(R.string.tiangou_img_url_prefix) + mMedicine.getImg();
+    String url;
+    if (!mMedicine.getImg().contains("http")) {
+      url = getResources().getString(R.string.tiangou_img_url_prefix) + mMedicine.getImg();
+    }
+    url = mMedicine.getImg();
     Picasso.with(this).load(url).into(mIconImageView);
     mMedicineNameTextView.setText(mMedicine.getName());
     mMedicineDescTextView.setText(mMedicine.getDescription());

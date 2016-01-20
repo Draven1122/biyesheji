@@ -11,10 +11,13 @@ import butterknife.Bind;
 import butterknife.OnClick;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.zhicall.hax.BaseActivity;
+import com.zhicall.hax.DravenException;
 import com.zhicall.hax.R;
 import com.zhicall.hax.bean.MedicalCategory;
 import com.zhicall.hax.net.Data;
 import com.zhicall.hax.net.IMedicalService;
+import com.zhicall.hax.utils.ToastManager;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import rx.Observable;
@@ -43,7 +46,36 @@ public class MedicalCategoryActivity extends BaseActivity {
   }
 
   @OnClick(R.id.btn_seaserch) public void onSearchButtonClicked() {
+    String keyword = mDrugKeywordEditText.getText().toString().trim();
+    if (keyword == null || "".equals(keyword)) {
+      ToastManager.showToast("搜索关键字不能为空");
+      return;
+    }
+    Subscription subscription = Data.tianGouService(IMedicalService.class)
+        .searchDrug("drug", keyword, 1, 15)
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribeOn(Schedulers.io())
+        .doOnSubscribe(() -> this.showProgressdialog("Search..."))
+        .finallyDo(this::dissmissProgressDialog)
+        .map(result -> {
+          if (result.getTngou().size() == 0 || result.getTngou() == null) {
+            throw new DravenException("未找到相关药品");
+          }
+          return result.getTngou();
+        })
+        .subscribe(list -> {
+          Intent intent = new Intent(MedicalCategoryActivity.this, SearchDrugResultActivity.class);
+          Bundle bundle = new Bundle();
+          bundle.putSerializable("medicineList", (Serializable) list);
+          bundle.putString("keyword", keyword);
+          intent.putExtras(bundle);
+          startActivity(intent);
+        }, Data.errorHanlder(mProgressDialog));
+    mSubscriptionSet.add(subscription);
+  }
 
+  @OnClick(R.id.img_delete) public void onDeleteImageClicked() {
+    mDrugKeywordEditText.setText("");
   }
 
   public void init() {

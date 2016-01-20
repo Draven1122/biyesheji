@@ -4,10 +4,8 @@ import android.app.ProgressDialog;
 import com.zhicall.hax.MyApplication;
 import com.zhicall.hax.R;
 import com.zhicall.hax.utils.ToastManager;
-
 import java.util.Map;
 import java.util.WeakHashMap;
-
 import retrofit.RestAdapter;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;

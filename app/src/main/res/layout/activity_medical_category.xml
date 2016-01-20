@@ -31,7 +31,7 @@
           android:layout_centerVertical="true"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_alignRight="@+id/et_disease_keywords"
+          android:layout_alignRight="@+id/et_drug_keywords"
           android:src="@drawable/select_seach_bar_delete"
           />
     </RelativeLayout>
