@@ -59,7 +59,6 @@ public class SearchDrugResultActivity extends BaseActivity {
       }
     };
     keyword = getIntent().getExtras().getString("keyword");
-    ToastManager.showToast(keyword);
     mMedicineListAdapter2 =
         new MedicineListAdapter2(this, mMedicineList, R.layout.layout_medicine_list_item);
     mPullToRefreshListView.setOnRefreshListener(
