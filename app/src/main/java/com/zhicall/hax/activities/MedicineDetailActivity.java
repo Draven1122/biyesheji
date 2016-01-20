@@ -29,7 +29,7 @@ public class MedicineDetailActivity extends BaseActivity {
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_medicine_detail);
-    initActionbar(true, false, "药品详情");
+    initActionbar(true, false, "MedicalDetail");
     initData();
   }
 

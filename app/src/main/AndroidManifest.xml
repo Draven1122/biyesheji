@@ -1,26 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.zhicall.hax">
+    package="com.zhicall.hax"
+    >
 
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_LOGS" />
-    <!--Bmob推送权限 -->
-    <uses-permission android:name="android.permission.READ_LOGS" />
+  <uses-permission android:name="android.permission.INTERNET"/>
+  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+  <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+  <uses-permission android:name="android.permission.READ_LOGS"/>
+  <!--Bmob推送权限 -->
+  <uses-permission android:name="android.permission.READ_LOGS"/>
 
 
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+  <uses-permission android:name="android.permission.WAKE_LOCK"/>
+  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 
-    <uses-permission android:name="android.permission.VIBRATE" />
+  <uses-permission android:name="android.permission.VIBRATE"/>
 
-    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+  <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT"/>
 
- 
+
   <application
       android:name=".MyApplication"
       android:allowBackup="true"
@@ -29,36 +30,33 @@
       android:supportsRtl="true"
       android:theme="@style/Theme.AppCompat.Light"
       >
-  
-        <activity
-            android:name=".activities.TestActivity"
-            android:launchMode="singleTop">
-            <!--  <intent-filter>
-                  <action android:name="android.intent.action.MAIN"></action>
-                  <category android:name="android.intent.category.LAUNCHER"></category>
-              </intent-filter>-->
-        </activity>
-        
-<activity
-            android:name=".activities.SplashActivity"
-            android:launchMode="standard"
-            android:theme="@android:style/Theme.Light.NoTitleBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"></action>
-                <category android:name="android.intent.category.LAUNCHER"></category>
-            </intent-filter>
-        </activity>
 
+    <activity
+        android:name=".activities.TestActivity"
+        android:launchMode="singleTop"
+        >
+      <!--  <intent-filter>
+            <action android:name="android.intent.action.MAIN"></action>
+            <category android:name="android.intent.category.LAUNCHER"></category>
+        </intent-filter>-->
+    </activity>
+
+    <activity
+        android:name=".activities.SplashActivity"
+        android:launchMode="standard"
+        android:theme="@android:style/Theme.Light.NoTitleBar"
+        >
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN"></action>
+        <category android:name="android.intent.category.LAUNCHER"></category>
+      </intent-filter>
+    </activity>
 
 
     <activity
         android:name=".activities.MainActivity"
         android:launchMode="singleTop"
         >
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN"></action>
-        <category android:name="android.intent.category.LAUNCHER"></category>
-      </intent-filter>
     </activity>
     <activity
         android:name=".activities.LoginActivity"
@@ -101,6 +99,12 @@
     <activity
         android:label="疾病列表"
         android:name=".activities.DiseaseListActivity"
+        android:screenOrientation="portrait"
+        >
+    </activity>
+    <activity
+        android:label="疾病详情"
+        android:name=".activities.DiseaseDetailActivity"
         android:screenOrientation="portrait"
         >
     </activity>

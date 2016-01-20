@@ -13,6 +13,7 @@
       android:orientation="horizontal"
       >
     <EditText
+        android:paddingLeft="7dp"
         android:background="@drawable/home_search_btn_normal"
         android:id="@+id/et_disease_keywords"
         android:layout_width="0dp"
@@ -21,10 +22,12 @@
         android:hint="输入疾病关键词搜索"
         />
     <Button
+        android:textColor="@color/white"
+        android:background="@drawable/select_btn_search"
         android:id="@+id/btn_seaserch"
         android:layout_width="0dp"
         android:layout_weight="1.5"
-        android:layout_height="40dp"
+        android:layout_height="36dp"
         android:layout_gravity="center_vertical"
         android:text="搜索"
         />

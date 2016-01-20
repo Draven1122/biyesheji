@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by Xingchen on 2016/1/19.
  * Email:huangjinxin@zhicall.cn
  */
-public class Disease implements Serializable{
+public class Disease implements Serializable {
   int count;
   String department;
   String description;
@@ -29,7 +29,18 @@ public class Disease implements Serializable{
   String message;
   String name;
   String place;
+  String msg;  // 只有失败时才有此属性值
+
+  public String getMsg() {
+    return msg;
+  }
+
   int rcount;
+  boolean status;     //做单独请求疾病时使用
+
+  public boolean getStatus() {
+    return status;
+  }
 
   public int getCount() {
     return count;

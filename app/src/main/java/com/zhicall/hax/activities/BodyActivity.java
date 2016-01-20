@@ -6,15 +6,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 import butterknife.Bind;
+import butterknife.OnClick;
 import com.handmark.pulltorefresh.library.PullToRefreshExpandableListView;
 import com.zhicall.hax.BaseActivity;
+import com.zhicall.hax.DravenException;
 import com.zhicall.hax.R;
 import com.zhicall.hax.bean.Body;
 import com.zhicall.hax.net.Data;
 import com.zhicall.hax.net.IMedicalService;
+import com.zhicall.hax.utils.ToastManager;
 import java.util.ArrayList;
 import java.util.List;
 import rx.Subscription;
@@ -26,8 +31,10 @@ import rx.schedulers.Schedulers;
  * Email:huangjinxin@zhicall.cn
  */
 public class BodyActivity extends BaseActivity {
-  private List<Body> mBodyList = new ArrayList<>();
+  @Bind(R.id.btn_seaserch) Button mSearchButton;
+  @Bind(R.id.et_disease_keywords) EditText mSearchEditText;
   @Bind(R.id.lstv_body) PullToRefreshExpandableListView mPullToRefreshExpandableListView;
+  private List<Body> mBodyList = new ArrayList<>();
   private ExpandableListView mExpandableListView;
   private BodyAdapter mBodyAdapter;
   private LayoutInflater mLayoutInflater;
@@ -35,8 +42,33 @@ public class BodyActivity extends BaseActivity {
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_body);
-    initActionbar(true, false, "韬綋閮ㄤ綅");
+    initActionbar(true, false, "Body");
     initData();
+  }
+
+  @OnClick(R.id.btn_seaserch) public void onSearchButtonCliked() {
+    String keywords = mSearchEditText.getText().toString().trim();
+    if (keywords == null || keywords.length() < 1) {
+      ToastManager.showToast("关键字不能为空");
+      return;
+    }
+    Data.tianGouService(IMedicalService.class)
+        .searchDisease(keywords)
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribeOn(Schedulers.io())
+        .doOnSubscribe(() -> showProgressdialog("Seaching..."))
+        .finallyDo(this::dissmissProgressDialog)
+        .subscribe(disease -> {
+          if (disease.getStatus()) {
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("disease", disease);
+            Intent intent = new Intent(BodyActivity.this, DiseaseDetailActivity.class);
+            intent.putExtras(bundle);
+            startActivity(intent);
+          } else {
+            throw new DravenException(disease.getMsg());
+          }
+        }, Data.errorHanlder(mProgressDialog));
   }
 
   @Override public void initData() {
@@ -44,7 +76,7 @@ public class BodyActivity extends BaseActivity {
     mBodyAdapter = new BodyAdapter();
     mExpandableListView = mPullToRefreshExpandableListView.getRefreshableView();
     mExpandableListView.setAdapter(mBodyAdapter);
-    Subscription mSubscription=Data.tianGouService(IMedicalService.class)
+    Subscription mSubscription = Data.tianGouService(IMedicalService.class)
         .body()
         .observeOn(AndroidSchedulers.mainThread())
         .subscribeOn(Schedulers.io())
@@ -71,7 +103,6 @@ public class BodyActivity extends BaseActivity {
         return false;
       }
     });
-
   }
 
   public class BodyAdapter extends BaseExpandableListAdapter {

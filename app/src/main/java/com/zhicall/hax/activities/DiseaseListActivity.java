@@ -1,7 +1,10 @@
 package com.zhicall.hax.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -39,7 +42,7 @@ public class DiseaseListActivity extends BaseActivity {
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_disease_list);
-    initActionbar(true, false, "疾病列表");
+    initActionbar(true, false, "DiseaseList");
     initData();
   }
 
@@ -72,6 +75,16 @@ public class DiseaseListActivity extends BaseActivity {
             loadData();
           }
         });
+    mPullToRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+      @Override public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Disease disease = mDiseaseList.get(position-1);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("disease", disease);
+        Intent intent = new Intent(DiseaseListActivity.this, DiseaseDetailActivity.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
+      }
+    });
   }
 
   public void loadData() {
