@@ -9,6 +9,11 @@ public class Result<T> {
   private T tngou;
   private String msg;
   private T list;       //因为第三方返回数据格式不一致不得已使用此方法
+  private  int total;
+
+  public int getTotal() {
+    return total;
+  }
 
   public T getList() {
     return list;

@@ -37,4 +37,8 @@ public interface IMedicalService {
 
   @GET("/tngou/disease/name") @Headers({ "apikey:d99a9ad0a9531fcbd1bb3139651e7249" })
   Observable<Disease> searchDisease(@Query("name") String name);
+
+  @GET("/tngou/disease/name") @Headers({ "apikey:d99a9ad0a9531fcbd1bb3139651e7249" })
+  Observable<Result<List<Medicine>>> searchDrug(@Query("name") String name,
+      @Query("keyword") String keyword, int page, int pagesize);
 }
