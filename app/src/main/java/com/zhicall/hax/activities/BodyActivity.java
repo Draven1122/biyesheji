@@ -28,6 +28,7 @@ import rx.schedulers.Schedulers;
 /**
  * Created by Xingchen on 2016/1/19.
  * Email:huangjinxin@zhicall.cn
+ * qq:328674568
  */
 public class BodyActivity extends BaseActivity {
   @Bind(R.id.et_disease_keywords) EditText mSearchEditText;
