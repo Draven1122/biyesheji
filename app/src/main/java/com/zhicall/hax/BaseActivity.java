@@ -66,11 +66,15 @@ public abstract class BaseActivity extends AppCompatActivity {
       lp.width = ViewGroup.LayoutParams.MATCH_PARENT;
       parent.setLayoutParams(lp);
     }
+    mBackImageView= (ImageView) getSupportActionBar().getCustomView().findViewById(R.id.img_back);
+    mBackImageView.setVisibility(left?View.VISIBLE:View.VISIBLE);
     mRightContainer =
         (RelativeLayout)getSupportActionBar().getCustomView().findViewById(R.id.rlayout_right_container);
     mRightContainer.setVisibility(right ? View.VISIBLE : View.GONE);
     ImageView mBackImageView=
         (ImageView) getSupportActionBar().getCustomView().findViewById(R.id.img_back);
+    mTitleTextView= (TextView) getSupportActionBar().getCustomView().findViewById(R.id.tv_actionbar_title);
+   mTitleTextView.setText(title);
     mBackImageView.setOnClickListener((view)->onBackPressed());
 
 

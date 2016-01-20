@@ -45,7 +45,7 @@ public class MedicineListActivity extends BaseActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_medicine_list);
     initActionbar(true, false, "MedicineList");
-    initData();
+      initData();
   }
 
   @Override public void initData() {
@@ -56,10 +56,12 @@ public class MedicineListActivity extends BaseActivity {
     mPullToRefreshListView.setAdapter(mMedicineListAdapter);
     mPullToRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);
     mPullToRefreshListView.setOnRefreshListener(
-        new PullToRefreshBase.OnRefreshListener2<ListView>() {
-          @Override public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
-            getData(true);
-          }
+            new PullToRefreshBase.OnRefreshListener2<ListView>() {
+                @Override
+                public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+                    getData(true);
+                }
+
 
           @Override public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
             if (!haxNextPage)
@@ -137,7 +139,7 @@ public class MedicineListActivity extends BaseActivity {
     mSubscriptionSet.add(subscription);
   }
 
-  public class MedicineListAdapter extends CommonAdapter<Medicine> {
+    public class MedicineListAdapter extends CommonAdapter<Medicine> {
 
     public MedicineListAdapter(Context context, List<Medicine> list, int resID) {
       super(context, list, resID);

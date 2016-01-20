@@ -23,9 +23,7 @@ public interface INewsService {
   Observable<Result<List<NewsSummary>>> getNewsSummary(@Nullable @Query("id") int CategoryId,
       @Nullable @Query("page") int page, @Nullable @Query("rows") int rows);
 
-  /**
-   * 应为API接口返回数据的不一致，故单独返回一个对象
-   */
+
   @GET("/tngou/info/show") @Headers({ "apikey:d99a9ad0a9531fcbd1bb3139651e7249" })
   Observable<NewsDetail> getNewsDetail(@Query("id") int newsID);
 }

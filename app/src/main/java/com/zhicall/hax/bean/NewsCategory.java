@@ -36,18 +36,3 @@ public class NewsCategory {
     return title;
   }
 }
-/*
-{
-    "status": true,
-    "tngou": [
-        {
-            "description": "社会热点，健康资讯，综合健康资讯,生活热点新闻,社会热点新闻,社会热点查询,提供最新的健康资讯,社会热点新闻网",
-            "id": 6,
-            "keywords": "社会热点",
-            "name": "社会热点",
-            "seq": 1,
-            "title": "社会热点"
-        },
-        ...]
-}
- */

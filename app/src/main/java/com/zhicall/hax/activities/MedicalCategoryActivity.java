@@ -25,62 +25,67 @@ import rx.schedulers.Schedulers;
  * Email:huangjinxin@zhicall.cn
  */
 public class MedicalCategoryActivity extends BaseActivity {
-  @Bind(R.id.lstv_medical_category) PullToRefreshListView mPullToRefreshListView;
-  ArrayAdapter<String> mArrayAdapter;
-  List<String> mMedicalCategoryNameList = new ArrayList<>();
-  List<MedicalCategory> mMedicalCategoryList = new ArrayList<>();
+    @Bind(R.id.lstv_medical_category)
+    PullToRefreshListView mPullToRefreshListView;
+    ArrayAdapter<String> mArrayAdapter;
+    List<String> mMedicalCategoryNameList = new ArrayList<>();
+    List<MedicalCategory> mMedicalCategoryList = new ArrayList<>();
 
-  @Override protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_medical_category);
-    initActionbar(true, false, "MedicalCategory");
-    init();
-  }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_medical_category);
+        initActionbar(true, false, "MedicalCategory");
+        init();
+    }
 
-  public void init() {
+    public void init() {
 
-    mArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,
-        mMedicalCategoryNameList);
-    mPullToRefreshListView.setAdapter(mArrayAdapter);
-    mPullToRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-      @Override public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        mArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,
+                mMedicalCategoryNameList);
+        mPullToRefreshListView.setAdapter(mArrayAdapter);
+        mPullToRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        MedicalCategory mMedicalCategory = mMedicalCategoryList.get(position - 1);
-        Intent intent = new Intent(MedicalCategoryActivity.this, MedicalCategory2Activity.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("medicineCategory", mMedicalCategory);
-        intent.putExtras(bundle);
-        startActivity(intent);
-      }
-    });
-    Subscription subscription = Data.tianGouService(IMedicalService.class)
-        .category(0)
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribeOn(Schedulers.io())
-        .map(result -> result.getTngou())
-        .flatMap(new Func1<List<MedicalCategory>, Observable<MedicalCategory>>() {
-          @Override
-          public Observable<MedicalCategory> call(List<MedicalCategory> medicalCategories) {
-            mMedicalCategoryList = medicalCategories;
-            return Observable.from(medicalCategories);
-          }
-        })
-        .map(new Func1<MedicalCategory, String>() {
-          @Override public String call(MedicalCategory medicalCategory) {
-            return medicalCategory.getTitle();
-          }
-        })
-        .toList()
-        .doOnSubscribe(() -> showProgressdialog("正在获取药品分类信息..."))
-        .finallyDo(() -> dissmissProgressDialog())
-        .subscribe(list -> {
-          mMedicalCategoryNameList.addAll(list);
-          mArrayAdapter.notifyDataSetChanged();
-        }, Data.errorHanlder());
-    mSubscriptionSet.add(subscription);
-  }
+                MedicalCategory mMedicalCategory = mMedicalCategoryList.get(position - 1);
+                Intent intent = new Intent(MedicalCategoryActivity.this, MedicalCategory2Activity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("medicineCategory", mMedicalCategory);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+        Subscription subscription = Data.tianGouService(IMedicalService.class)
+                .category(0)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .map(result -> result.getTngou())
+                .flatMap(new Func1<List<MedicalCategory>, Observable<MedicalCategory>>() {
+                    @Override
+                    public Observable<MedicalCategory> call(List<MedicalCategory> medicalCategories) {
+                        mMedicalCategoryList = medicalCategories;
+                        return Observable.from(medicalCategories);
+                    }
+                })
+                .map(new Func1<MedicalCategory, String>() {
+                    @Override
+                    public String call(MedicalCategory medicalCategory) {
+                        return medicalCategory.getTitle();
+                    }
+                })
+                .toList()
+                .doOnSubscribe(() -> showProgressdialog("正在获取药品信息..."))
+                .finallyDo(() -> dissmissProgressDialog())
+                .subscribe(list -> {
+                    mMedicalCategoryNameList.addAll(list);
+                    mArrayAdapter.notifyDataSetChanged();
+                }, Data.errorHanlder());
+        mSubscriptionSet.add(subscription);
+    }
 
-  @Override public void initData() {
+    @Override
+    public void initData() {
 
-  }
+    }
 }

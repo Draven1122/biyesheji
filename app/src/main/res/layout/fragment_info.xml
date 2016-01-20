@@ -50,7 +50,7 @@
         android:layout_weight="1"
         >
       <View
-          android:layout_width="1dp"
+          android:layout_width="1.5dp"
           android:layout_height="30dp"
           android:background="@color/light_blue"
           android:layout_alignParentRight="true"
@@ -83,7 +83,7 @@
         android:layout_weight="1"
         >
       <View
-          android:layout_width="1dp"
+          android:layout_width="1.5dp"
           android:layout_height="30dp"
           android:background="@color/light_blue"
           android:layout_alignParentRight="true"

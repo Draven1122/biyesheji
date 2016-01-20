@@ -26,6 +26,8 @@ import com.zhicall.hax.common.CommonAdapter;
 import com.zhicall.hax.common.CommonViewHolder;
 import com.zhicall.hax.net.Data;
 import com.zhicall.hax.net.INewsService;
+import com.zhicall.hax.utils.ToastManager;
+
 import java.util.ArrayList;
 import java.util.List;
 import rx.Subscription;
@@ -154,10 +156,9 @@ public class InfoFragment extends Fragment {
     return view;
   }
 
-  private void getDate(boolean isFresh) {
-    //防止用户在下拉刷新读取数据的过程中切换新闻种类 导致的数据显示有误的问题
+  private void getDate(boolean isRefresh) {
     if (mCurrentSubscription != null) mCurrentSubscription.unsubscribe();
-    if (isFresh) {
+    if (isRefresh) {
       mCurrentPage = 1;
     } else {
       mCurrentPage++;
@@ -171,7 +172,7 @@ public class InfoFragment extends Fragment {
           if (!result.isSuccess()) {
             throw new DravenException("Server is connected but no data back!");
           }
-          if (isFresh) {
+          if (isRefresh) {
             mNewsSummartAdapter.setList(result.getTngou());
           } else {
             mNewsSummartAdapter.addList(result.getTngou());
@@ -209,7 +210,7 @@ public class InfoFragment extends Fragment {
         str = newsSummary.getDescription().substring(0, 22) + "...";
         mSummaryTextView.setText(str);
         String url = "http://tnfs.tngou.net/img" + newsSummary.getImg();
-        Picasso.with(getActivity()).load(url).into(mIconImageView);
+        Picasso.with(getActivity()).load(url).placeholder(R.drawable.loding).error(R.drawable.load_error).into(mIconImageView);
       }
     }
   }
