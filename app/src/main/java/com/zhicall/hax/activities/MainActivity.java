@@ -9,29 +9,22 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
-
 import butterknife.Bind;
 import butterknife.OnClick;
-import cn.bmob.push.BmobPush;
-import cn.bmob.v3.BmobInstallation;
-import de.greenrobot.event.EventBus;
-
-import com.squareup.otto.Subscribe;
 import com.zhicall.hax.BaseActivity;
 import com.zhicall.hax.MyApplication;
 import com.zhicall.hax.R;
 import com.zhicall.hax.bmob.bean.User;
-import com.zhicall.hax.bmob.receivers.BmobPushReceiver;
 import com.zhicall.hax.event.BmobPushEvent;
 import com.zhicall.hax.fragments.HomeFragment;
 import com.zhicall.hax.fragments.InfoFragment;
 import com.zhicall.hax.fragments.SearchInfoFragment;
 import com.zhicall.hax.utils.ToastManager;
+import de.greenrobot.event.EventBus;
 
 /**
  * APPÊ×Ò³
